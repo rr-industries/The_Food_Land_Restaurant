@@ -23,7 +23,7 @@
   --rich-red: #8B0000;
   --velvet-red: #800020;
   --parchment: #F5F5DC;
-  --parchment-transparent: rgba(245, 245, 220, 0.9);
+  --parchment-transparent: rgba(245, 245, 220, 0.7); /* More transparent */
 }
 
 * {
@@ -56,11 +56,12 @@ section {
 .testimonials,
 .features,
 .events {
-  background-color: rgba(248, 248, 248, 0.95);
+  background-color: rgba(248, 248, 248, 0.85); /* Slightly more transparent */
 }
 
 #home {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),center/cover no-repeat;
+  color: var(--text-light);
 }
 
 h1, h2, h3, h4, h5, h6 {
