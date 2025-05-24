@@ -1,2125 +1,2308 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Food Land Restaurant | Authentic Indian Cuisine</title>
-<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root {
-  --primary-color: #d4af37; /* Gold */
-  --secondary-color: #b8860b; /* Dark goldenrod */
-  --accent-color: #f8f8f8;
-  --text-light: #ffffff;
-  --text-dark: #333333;
-  --text-secondary: rgba(0, 0, 0, 0.8);
-  --gold-light: #ffd700;
-  --gold-dark: #daa520;
-  --matte-black: #28282B;
-  --rich-red: #8B0000;
-  --velvet-red: #800020;
-  --parchment: #F5F5DC;
-  --parchment-transparent: rgba(245, 245, 220, 0.7); /* More transparent */
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  background: url('https://i.pinimg.com/736x/83/85/91/838591cd2e19bc138c6101c8fc31317d.jpg') no-repeat center center fixed;
-  background-size: cover;
-  min-height: 100vh;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  color: var(--text-dark);
-  background-color: var(--parchment-transparent);
-  min-height: 100vh;
-  overflow-x: hidden;
-  line-height: 1.7;
-}
-
-section {
-  padding: 80px 0;
-  position: relative;
-  background-color: var(--parchment-transparent);
-}
-
-.testimonials,
-.features,
-.events {
-  background-color: rgba(248, 248, 248, 0.85); /* Slightly more transparent */
-}
-
-#home {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),center/cover no-repeat;
-  color: var(--text-light);
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 600;
-  letter-spacing: 1px;
-  color: var(--rich-red);
-}
-
-.loader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--primary-color);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  transition: opacity 0.5s, visibility 0.5s;
-}
-
-.loader-logo {
-  width: 150px;
-  height: 150px;
-  margin-bottom: 15px;
-  animation: pulse 2s ease-in-out infinite;
-  border-radius: 50%;
-  border: 3px solid var(--rich-red);
-  box-shadow: 0 0 20px rgba(139, 0, 0, 0.5);
-}
-
-.loader-text {
-  color: var(--rich-red);
-  font-size: 2.5rem;
-  font-weight: 600;
-  margin-top: 15px;
-  animation: fadeIn 0.5s ease-in-out;
-  font-family: 'Playfair Display', serif;
-  letter-spacing: 3px;
-  text-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
-}
-
-@keyframes pulse {
-  0% { transform: scale(0.95); opacity: 0.8; }
-  50% { transform: scale(1); opacity: 1; }
-  100% { transform: scale(0.95); opacity: 0.8; }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.loader-hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 30px;
-}
-
-header {
-  background-color: rgba(212, 175, 55, 0.95);
-  color: var(--text-light);
-  padding: 20px 0;
-  position: fixed;
-  width: 100%;
-  z-index: 1000;
-  transition: all 0.3s ease;
-  border-bottom: 1px solid rgba(184, 134, 11, 0.2);
-}
-
-header.scrolled {
-  padding: 15px 0;
-  background-color: rgba(212, 175, 55, 0.98);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
-
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-}
-
-.logo-img {
-  height: 50px;
-  width: 50px;
-  margin-right: 15px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--rich-red);
-}
-
-.logo {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--text-light);
-  text-decoration: none;
-  font-family: 'Playfair Display', serif;
-  letter-spacing: 2px;
-}
-
-nav ul {
-  display: flex;
-  list-style: none;
-}
-
-nav ul li {
-  margin-left: 30px;
-}
-
-nav ul li a {
-  color: var(--text-light);
-  text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: 500;
-  transition: color 0.3s ease;
-  position: relative;
-  font-family: 'Poppins', sans-serif;
-}
-
-nav ul li a:hover {
-  color: var(--parchment);
-}
-
-nav ul li a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 1px;
-  bottom: -5px;
-  left: 0;
-  background-color: var(--parchment);
-  transition: width 0.3s ease;
-}
-
-nav ul li a:hover::after {
-  width: 100%;
-}
-
-.mobile-menu-btn {
-  display: none;
-  background: none;
-  border: none;
-  color: var(--text-light);
-  font-size: 24px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.mobile-menu-btn:hover {
-  color: var(--parchment);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 180px 0;
-}
-
-.hero-title {
-  font-size: 5rem;
-  margin-bottom: 1.5rem;
-  line-height: 1;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-  color: var(--text-light);
-  animation: fadeIn 1s ease-in-out;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
-
-.hero-subtitle {
-  font-size: 1.5rem;
-  margin-bottom: 3rem;
-  max-width: 800px;
-  color: var(--parchment);
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.6;
-  animation: fadeIn 1.2s ease-in-out;
-  font-weight: 400;
-  letter-spacing: 0.5px;
-}
-
-.hero-btns {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  flex-wrap: wrap;
-  animation: fadeIn 1.5s ease-in-out;
-}
-
-.btn {
-  display: inline-block;
-  padding: 18px 40px;
-  background-color: var(--rich-red);
-  color: var(--text-light);
-  text-decoration: none;
-  border-radius: 4px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  border: 2px solid var(--rich-red);
-  font-size: 1.1rem;
-  min-width: 220px;
-  text-align: center;
-  letter-spacing: 1px;
-  font-family: 'Poppins', sans-serif;
-  cursor: pointer;
-  text-transform: uppercase;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.btn:hover {
-  background-color: transparent;
-  color: var(--rich-red);
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-}
-
-.btn-outline {
-  background-color: transparent;
-  color: var(--rich-red);
-  border: 2px solid var(--rich-red);
-}
-
-.btn-outline:hover {
-  background-color: var(--rich-red);
-  color: var(--text-light);
-}
-
-.section-title {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.section-title h2 {
-  font-size: 3.0rem;
-  color: var(--rich-red);
-  position: relative;
-  display: inline-block;
-  padding-bottom: 20px;
-}
-
-.section-title h2::after {
-  content: '';
-  position: absolute;
-  width: 100px;
-  height: 2px;
-  background-color: var(--rich-red);
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.about-content {
-  display: flex;
-  align-items: center;
-  gap: 60px;
-}
-
-.about-text {
-  flex: 1;
-}
-
-.about-text h3 {
-  font-size: 2.5rem;
-  margin-bottom: 25px;
-  color: var(--rich-red);
-}
-
-.about-text p {
-  margin-bottom: 25px;
-  line-height: 1.8;
-  font-size: 1.2rem;
-  color: var(--text-dark);
-}
-
-.about-image {
-  flex: 1;
-  position: relative;
-}
-
-.about-image img {
-  width: 100%;
-  border-radius: 5px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  transition: transform 0.5s ease;
-  border: 1px solid rgba(184, 134, 11, 0.3);
-}
-
-.about-image:hover img {
-  transform: scale(1.03);
-}
-
-.about-image::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border: 2px solid var(--rich-red);
-  border-radius: 5px;
-  top: -20px;
-  left: -20px;
-  z-index: -1;
-  opacity: 0.5;
-}
-
-.menu-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 40px;
-  margin-top: 60px;
-}
-
-.menu-item {
-  background-color: var(--text-light);
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: all 0.5s ease;
-  aspect-ratio: 4/5;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  border: 1px solid rgba(184, 134, 11, 0.2);
-}
-
-.menu-item:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-  border-color: var(--rich-red);
-}
-
-.menu-item img {
-  width: 100%;
-  height: 60%;
-  object-fit: cover;
-  flex-shrink: 0;
-  transition: transform 0.5s ease;
-  filter: grayscale(20%);
-}
-
-.menu-item:hover img {
-  transform: scale(1.05);
-  filter: grayscale(0%);
-}
-
-.menu-item-content {
-  padding: 25px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.menu-item-content h3 {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  color: var(--rich-red);
-  font-family: 'Playfair Display', serif;
-}
-
-.menu-item-content p {
-  color: var(--text-dark);
-  margin-bottom: 20px;
-  line-height: 1.6;
-  font-size: 1.1rem;
-  opacity: 0.9;
-}
-
-.price {
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: var(--rich-red);
-  font-family: 'Playfair Display', serif;
-  margin-top: auto;
-  letter-spacing: 1px;
-  padding-top: 10px;
-}
-
-.menu-btn-container {
-  text-align: center;
-  margin-top: 60px;
-}
-
-.video-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 40px;
-  margin-top: 60px;
-}
-
-.video-item {
-  position: relative;
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-  background: var(--text-light);
-  transition: all 0.5s ease;
-  aspect-ratio: 1/1;
-  cursor: pointer;
-  border: 1px solid rgba(184, 134, 11, 0.2);
-}
-
-.video-item:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-  border-color: var(--rich-red);
-}
-
-.video-item video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  border-bottom: 2px solid var(--rich-red);
-}
-
-.video-caption {
-  padding: 25px;
-  text-align: center;
-  background: var(--text-light);
-}
-
-.video-caption h3 {
-  color: var(--rich-red);
-  font-size: 1.5rem;
-  font-family: 'Playfair Display', serif;
-}
-
-.reservation-form {
-  max-width: 800px;
-  margin: 0 auto;
-  background-color: var(--text-light);
-  padding: 60px;
-  border-radius: 5px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(184, 134, 11, 0.2);
-}
-
-.reservation-form h3 {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  color: var(--rich-red);
-  position: relative;
-  padding-bottom: 20px;
-  font-family: 'Playfair Display', serif;
-}
-
-.reservation-form h3::after {
-  content: '';
-  position: absolute;
-  width: 100px;
-  height: 2px;
-  background-color: var(--rich-red);
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.form-group {
-  margin-bottom: 30px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 15px;
-  font-weight: 500;
-  font-size: 1.1rem;
-  color: var(--rich-red);
-  font-family: 'Poppins', sans-serif;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-  width: 100%;
-  padding: 18px 25px;
-  border: 1px solid rgba(184, 134, 11, 0.3);
-  border-radius: 4px;
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-  background-color: var(--parchment);
-  color: var(--text-dark);
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: var(--rich-red);
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(139, 0, 0, 0.2);
-}
-
-.form-group select {
-  appearance: none;
-  background-repeat: no-repeat;
-  background-position: right 20px center;
-  background-size: 12px;
-}
-
-.form-group textarea {
-  min-height: 150px;
-  resize: vertical;
-}
-
-.form-row {
-  display: flex;
-  gap: 30px;
-}
-
-.form-row .form-group {
-  flex: 1;
-}
-
-.submit-btn {
-  width: 100%;
-  padding: 20px;
-  background-color: var(--rich-red);
-  color: var(--text-light);
-  border: none;
-  border-radius: 4px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 20px;
-  letter-spacing: 1px;
-  font-family: 'Poppins', sans-serif;
-  text-transform: uppercase;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.submit-btn:hover {
-  background-color: var(--velvet-red);
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
-.testimonials {
-  padding: 80px 0;
-  overflow: hidden;
-  position: relative;
-}
-
-.testimonials-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 30px;
-}
-
-.testimonials-title {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.testimonials-title h2 {
-  font-size: 3.0rem;
-  color: var(--rich-red);
-  position: relative;
-  display: inline-block;
-  padding-bottom: 20px;
-}
-
-.testimonials-title h2::after {
-  content: '';
-  position: absolute;
-  width: 100px;
-  height: 2px;
-  background-color: var(--rich-red);
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.testimonials-track {
-  display: flex;
-  gap: 30px;
-  padding: 20px 0;
-  width: max-content;
-  will-change: transform;
-}
-
-.testimonial-card {
-  background-color: var(--parchment);
-  padding: 30px;
-  border-radius: 5px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: all 0.5s ease;
-  border: 1px solid rgba(184, 134, 11, 0.2);
-  position: relative;
-  min-width: 300px;
-  height: 300px;
-  width: 300px;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.testimonial-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-  border-color: var(--rich-red);
-}
-
-.testimonial-text {
-  color: var(--text-dark);
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 20px;
-  position: relative;
-  padding-left: 20px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
-  flex-grow: 1;
-}
-
-.testimonial-text::before {
-  content: '"';
-  position: absolute;
-  left: 0;
-  top: -10px;
-  font-size: 3rem;
-  color: var(--rich-red);
-  opacity: 0.3;
-  font-family: serif;
-}
-
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  margin-top: auto;
-}
-
-.testimonial-author-img {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 15px;
-  border: 2px solid var(--rich-red);
-}
-
-.testimonial-author-info h4 {
-  color: var(--rich-red);
-  font-size: 1.2rem;
-  margin-bottom: 5px;
-}
-
-.testimonial-author-info p {
-  color: var(--text-dark);
-  opacity: 0.8;
-  font-size: 0.9rem;
-}
-
-.testimonial-rating {
-  color: var(--rich-red);
-  margin-top: 5px;
-  font-size: 0.9rem;
-}
-
-.testimonial-rating i {
-  margin-right: 3px;
-}
-
-.testimonial-date {
-  color: var(--text-dark);
-  opacity: 0.6;
-  font-size: 0.8rem;
-  text-align: right;
-  margin-top: 10px;
-}
-
-.testimonials-mask {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  background: linear-gradient(90deg, var(--text-light) 0%, rgba(255, 255, 255, 0) 5%, rgba(255, 255, 255, 0) 95%, var(--text-light) 100%);
-}
-
-.map-section {
-  padding: 80px 0;
-}
-
-.map-container {
-  position: relative;
-  height: 500px;
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(184, 134, 11, 0.2);
-}
-
-.map-container iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  margin-top: 40px;
-}
-
-.feature-card {
-  background-color: var(--parchment);
-  border-radius: 4px;
-  padding: 30px 20px;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: all 0.5s ease;
-  border: 1px solid rgba(184, 134, 11, 0.2);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.feature-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-  border-color: var(--rich-red);
-}
-
-.feature-icon {
-  font-size: 2.5rem;
-  color: var(--rich-red);
-  margin-bottom: 20px;
-}
-
-.feature-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-  color: var(--rich-red);
-  font-family: 'Playfair Display', serif;
-}
-
-.feature-card p {
-  color: var(--text-dark);
-  font-size: 1rem;
-  opacity: 0.9;
-  margin-bottom: 15px;
-  flex-grow: 1;
-}
-
-.events {
-  padding: 60px 0;
-}
-
-footer {
-  background-color: var(--primary-color);
-}
-
-.footer-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 50px;
-  margin-bottom: 60px;
-}
-
-.footer-column h3 {
-  font-size: 1.8rem;
-  margin-bottom: 30px;
-  color: var(--parchment);
-  position: relative;
-  padding-bottom: 15px;
-  font-family: 'Playfair Display', serif;
-}
-
-.footer-column h3::after {
-  content: '';
-  position: absolute;
-  width: 70px;
-  height: 2px;
-  background-color: var(--parchment);
-  bottom: 0;
-  left: 0;
-}
-
-.footer-column p {
-  margin-bottom: 20px;
-  line-height: 1.8;
-  color: var(--parchment);
-  font-size: 1.1rem;
-  opacity: 0.9;
-}
-
-.footer-column ul {
-  list-style: none;
-}
-
-.footer-column ul li {
-  margin-bottom: 15px;
-}
-
-.footer-column ul li a {
-  color: var(--parchment);
-  text-decoration: none;
-  transition: color 0.3s ease;
-  font-size: 1.1rem;
-  opacity: 0.9;
-}
-
-.footer-column ul li a:hover {
-  color: var(--text-light);
-  opacity: 1;
-}
-
-.contact-info {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 20px;
-}
-
-.contact-info i {
-  margin-right: 15px;
-  color: var(--parchment);
-  width: 20px;
-  text-align: center;
-  margin-top: 5px;
-  font-size: 1.2rem;
-}
-
-.contact-info a {
-  color: var(--parchment);
-  text-decoration: none;
-  transition: color 0.3s ease;
-  font-size: 1.1rem;
-  opacity: 0.9;
-}
-
-.contact-info a:hover {
-  color: var(--text-light);
-  opacity: 1;
-}
-
-.phone-numbers {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.phone-number {
-  background: rgba(245, 245, 220, 0.1);
-  padding: 10px 20px;
-  border-radius: 4px;
-  font-size: 1rem;
-  color: var(--parchment);
-  text-decoration: none;
-  display: inline-block;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(245, 245, 220, 0.3);
-}
-
-.phone-number:hover {
-  background: rgba(245, 245, 220, 0.2);
-  transform: translateY(-3px);
-}
-
-.social-links {
-  display: flex;
-  gap: 20px;
-  margin-top: 30px;
-}
-
-.social-links a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 45px;
-  height: 45px;
-  background-color: rgba(245, 245, 220, 0.1);
-  border-radius: 4px;
-  color: var(--parchment);
-  transition: all 0.3s ease;
-  font-size: 1.2rem;
-  border: 1px solid rgba(245, 245, 220, 0.3);
-}
-
-.social-links a:hover {
-  background-color: var(--parchment);
-  color: var(--primary-color);
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.footer-bottom {
-  text-align: center;
-  padding-top: 30px;
-  border-top: 1px solid rgba(245, 245, 220, 0.2);
-}
-
-.footer-bottom p {
-  color: var(--parchment);
-  font-size: 1rem;
-  opacity: 0.7;
-}
-
-.exit-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9998;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.5s ease;
-}
-
-.exit-modal.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.exit-modal-content {
-  background-color: var(--parchment);
-  padding: 60px;
-  border-radius: 5px;
-  max-width: 600px;
-  text-align: center;
-  position: relative;
-  border: 1px solid var(--rich-red);
-  box-shadow: 0 0 30px rgba(139, 0, 0, 0.3);
-}
-
-.exit-modal h2 {
-  color: var(--rich-red);
-  margin-bottom: 30px;
-  font-size: 2.5rem;
-}
-
-.exit-modal p {
-  color: var(--text-dark);
-  margin-bottom: 30px;
-  font-size: 1.2rem;
-  line-height: 1.8;
-}
-
-.exit-modal-close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: none;
-  border: none;
-  color: var(--rich-red);
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.exit-modal-close:hover {
-  transform: rotate(90deg);
-}
-
-.rating-stars {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 30px 0;
-}
-
-.rating-star {
-  font-size: 2rem;
-  color: var(--rich-red);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.rating-star:hover,
-.rating-star.active {
-  transform: scale(1.2);
-  color: var(--primary-color);
-}
-
-.review-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.5s ease;
-}
-
-.review-modal.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.review-modal-content {
-  background-color: var(--parchment);
-  padding: 60px;
-  border-radius: 5px;
-  max-width: 600px;
-  text-align: center;
-  position: relative;
-  border: 1px solid var(--rich-red);
-  box-shadow: 0 0 30px rgba(139, 0, 0, 0.3);
-}
-
-.review-modal h2 {
-  color: var(--rich-red);
-  margin-bottom: 30px;
-  font-size: 2.5rem;
-}
-
-.review-modal p {
-  color: var(--text-dark);
-  margin-bottom: 30px;
-  font-size: 1.2rem;
-  line-height: 1.8;
-}
-
-.review-modal-close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: none;
-  border: none;
-  color: var(--rich-red);
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.review-modal-close:hover {
-  transform: rotate(90deg);
-}
-
-.review-modal-btn {
-  display: inline-block;
-  padding: 15px 30px;
-  background-color: var(--rich-red);
-  color: var(--text-light);
-  text-decoration: none;
-  border-radius: 4px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  border: 2px solid var(--rich-red);
-  font-size: 1.1rem;
-  margin-top: 20px;
-  cursor: pointer;
-}
-
-.review-modal-btn:hover {
-  background-color: transparent;
-  color: var(--rich-red);
-  transform: translateY(-3px);
-}
-
-@media (max-width: 1200px) {
-  .hero-title {
-    font-size: 4.5rem;
-  }
-}
-
-@media (max-width: 992px) {
-  .hero-title {
-    font-size: 4rem;
-  }
-
-  .hero-subtitle {
-    font-size: 1.3rem;
-  }
-
-  .about-content {
-    flex-direction: column;
-  }
-
-  .about-image {
-    margin-top: 50px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .about-image::before {
-    display: none;
-  }
-
-  .map-container {
-    height: 450px;
-  }
-
-  .exit-modal-content,
-  .review-modal-content {
-    padding: 40px;
-    max-width: 500px;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-title {
-    font-size: 3.5rem;
-  }
-
-  .hero-subtitle {
-    font-size: 1.1rem;
-  }
-
-  .section-title h2 {
-    font-size: 3rem;
-  }
-
-  .btn {
-    padding: 15px 30px;
-    font-size: 1rem;
-  }
-
-  .hero-btns {
-    gap: 20px;
-  }
-
-  nav ul {
-    position: fixed;
-    top: 90px;
-    left: -100%;
-    width: 100%;
-    height: calc(100vh - 90px);
-    background-color: var(--primary-color);
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding-top: 50px;
-    transition: all 0.5s ease;
-    border-top: 1px solid rgba(184, 134, 11, 0.2);
-  }
-
-  nav ul.active {
-    left: 0;
-  }
-
-  nav ul li {
-    margin: 20px 0;
-  }
-
-  .mobile-menu-btn {
-    display: block;
-  }
-
-  .form-row {
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .reservation-form {
-    padding: 40px;
-  }
-
-  .map-container {
-    height: 400px;
-  }
-
-  .exit-modal-content,
-  .review-modal-content {
-    padding: 30px;
-    max-width: 90%;
-  }
-
-  .exit-modal h2,
-  .review-modal h2 {
-    font-size: 2rem;
-  }
-
-  .testimonial-card {
-    height: 300px;
-    width: 300px;
-    min-width: 300px;
-  }
-}
-
-@media (max-width: 576px) {
-  .hero-title {
-    font-size: 3rem;
-  }
-
-  .hero-subtitle {
-    font-size: 1rem;
-  }
-
-  .section-title h2 {
-    font-size: 2.5rem;
-  }
-
-  .menu-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .menu-item {
-    aspect-ratio: 3/4;
-  }
-
-  .menu-item-content {
-    padding: 20px;
-  }
-
-  .menu-item-content h3 {
-    font-size: 1.6rem;
-  }
-
-  .menu-item-content p {
-    font-size: 1rem;
-  }
-
-  .price {
-    font-size: 1.6rem;
-  }
-
-  .reservation-form {
-    padding: 30px 20px;
-  }
-
-  .logo-img {
-    height: 45px;
-    width: 45px;
-    margin-right: 12px;
-  }
-
-  .logo {
-    font-size: 1.6rem;
-  }
-
-  .map-container {
-    height: 350px;
-  }
-
-  .footer-content {
-    grid-template-columns: 1fr;
-  }
-
-  .exit-modal-content,
-  .review-modal-content {
-    padding: 20px 15px;
-  }
-
-  .exit-modal h2,
-  .review-modal h2 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-  }
-
-  .exit-modal p,
-  .review-modal p {
-    font-size: 1rem;
-    margin-bottom: 20px;
-  }
-
-  .rating-stars {
-    margin: 20px 0;
-  }
-
-  .rating-star {
-    font-size: 1.5rem;
-  }
-
-  .testimonial-card {
-    height: 300px;
-    width: 300px;
-    min-width: 300px;
-    padding: 20px;
-  }
-
-  .testimonial-text {
-    font-size: 1rem;
-    -webkit-line-clamp: 4;
-  }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Food Land Restaurant | Authentic Cuisine in Nagpur</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ====== Global Styles ====== */
+        :root {
+            --primary-color: #013220;
+            --secondary-color: #F5F5DC;
+            --accent-color: #D4AF37;
+            --text-dark: #333333;
+            --text-light: #FFFFFF;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--secondary-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 0.5rem auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        /* ====== Loading Animation ====== */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--primary-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1s ease-out;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .logo-animation {
+            width: 200px;
+            height: 200px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .loading-text {
+            color: var(--secondary-color);
+            font-family: 'Playfair Display', serif;
+            margin-top: 20px;
+            font-size: 2rem;
+            animation: fadeInOut 2s infinite;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+
+        /* ====== Header & Navigation ====== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(1, 50, 32, 0.9);
+            z-index: 1000;
+            transition: var(--transition);
+            padding: 1rem 0;
+        }
+
+        header.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 60px;
+            transition: var(--transition);
+        }
+
+        header.scrolled .logo img {
+            height: 50px;
+        }
+
+        .logo-text {
+            margin-left: 1rem;
+            color: var(--secondary-color);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+            position: relative;
+        }
+
+        .nav-links a {
+            color: var(--secondary-color);
+            font-weight: 600;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ====== Hero Section ====== */
+        .hero {
+            height: 100vh;
+            min-height: 800px;
+            background: linear-gradient(rgba(1, 50, 32, 0.7), rgba(1, 50, 32, 0.7)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--secondary-color);
+            padding: 0 2rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        /* ====== About Section ====== */
+        .about {
+            padding: 6rem 0;
+            background-color: var(--secondary-color);
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-img {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-content h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-features {
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-right: 1rem;
+            margin-top: 0.3rem;
+        }
+
+        /* ====== Menu Section ====== */
+        .menu {
+            padding: 6rem 0;
+            background-color: #f9f9f9;
+        }
+
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.8rem 2rem;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: var(--transition);
+            margin: 0 0.5rem;
+        }
+
+        .tab-btn.active {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--accent-color);
+        }
+
+        .tab-btn:hover {
+            color: var(--primary-color);
+        }
+
+        .menu-category {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .menu-category.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-item-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .menu-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .menu-item:hover .menu-item-img img {
+            transform: scale(1.1);
+        }
+
+        .menu-item-content {
+            padding: 1.5rem;
+        }
+
+        .menu-item-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+        }
+
+        .menu-item-price {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .menu-item-desc {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .dietary-labels {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .dietary-label {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .veg { background-color: #e8f5e9; color: #2e7d32; }
+        .non-veg { background-color: #ffebee; color: #c62828; }
+        .spicy { background-color: #fff3e0; color: #e65100; }
+        .gluten-free { background-color: #e3f2fd; color: #1565c0; }
+
+        .menu-download {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        /* ====== Gallery Section ====== */
+        .gallery {
+            padding: 6rem 0;
+            background-color: var(--secondary-color);
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 250px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(1, 50, 32, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-icon {
+            color: var(--secondary-color);
+            font-size: 2rem;
+        }
+
+        /* ====== Online Order Section ====== */
+        .order-online {
+            padding: 6rem 0;
+            background-color: #f9f9f9;
+        }
+
+        .order-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .order-img {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .order-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .order-content h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .order-content p {
+            margin-bottom: 2rem;
+        }
+
+        .delivery-partners {
+            margin-top: 2rem;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .partner-logo {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: var(--shadow);
+        }
+
+        .partner-logo img {
+            max-height: 40px;
+            width: auto;
+        }
+
+        /* ====== Reservations Section ====== */
+        .reservations {
+            padding: 6rem 0;
+            background-color: var(--secondary-color);
+            background: linear-gradient(rgba(1, 50, 32, 0.8), rgba(1, 50, 32, 0.8)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1934&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--secondary-color);
+        }
+
+        .reservations-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .reservations h2 {
+            color: var(--secondary-color);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .reservation-form {
+            background-color: rgba(245, 245, 220, 0.9);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Open Sans', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+
+        /* ====== Contact Section ====== */
+        .contact {
+            padding: 6rem 0;
+            background-color: #f9f9f9;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .contact-icon {
+            color: var(--accent-color);
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .opening-hours {
+            margin-top: 2rem;
+        }
+
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .hours-table tr {
+            border-bottom: 1px solid #eee;
+        }
+
+        .hours-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .hours-table td {
+            padding: 0.5rem 0;
+        }
+
+        .hours-table td:last-child {
+            text-align: right;
+            font-weight: 600;
+        }
+
+        .map-container {
+            height: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ====== Special Offers Section ====== */
+        .special-offers {
+            padding: 6rem 0;
+            background-color: var(--secondary-color);
+        }
+
+        .offers-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .offer-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .offer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .offer-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .offer-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .offer-card:hover .offer-img img {
+            transform: scale(1.1);
+        }
+
+        .offer-content {
+            padding: 1.5rem;
+        }
+
+        .offer-title {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .offer-desc {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .offer-valid {
+            font-size: 0.9rem;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* ====== Testimonials Section ====== */
+        .testimonials {
+            padding: 6rem 0;
+            background: linear-gradient(rgba(1, 50, 32, 0.9), rgba(1, 50, 32, 0.9)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--secondary-color);
+        }
+
+        .testimonials-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .testimonials h2 {
+            color: var(--secondary-color);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .testimonial-slider {
+            position: relative;
+        }
+
+        .testimonial-slide {
+            background-color: rgba(245, 245, 220, 0.9);
+            padding: 2rem;
+            border-radius: 10px;
+            color: var(--text-dark);
+            margin: 0 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--accent-color);
+            opacity: 0.3;
+            position: absolute;
+        }
+
+        .testimonial-text::before {
+            top: -1rem;
+            left: -1rem;
+        }
+
+        .testimonial-text::after {
+            bottom: -2rem;
+            right: -1rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.2rem;
+        }
+
+        .author-role {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-rating {
+            color: var(--accent-color);
+            margin-top: 0.5rem;
+        }
+
+        /* ====== Footer ====== */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+        }
+
+        .footer-col h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            margin-right: 1rem;
+        }
+
+        .footer-logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+        }
+
+        .footer-about p {
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(245, 245, 220, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .footer-contact-icon {
+            color: var(--accent-color);
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .newsletter p {
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+        }
+
+        .newsletter-btn {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .newsletter-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(245, 245, 220, 0.1);
+        }
+
+        /* ====== Responsive Styles ====== */
+        @media (max-width: 992px) {
+            .about-container,
+            .order-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .about-img,
+            .order-img {
+                order: -1;
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .menu-items {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--primary-color);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: var(--transition);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-<!-- Loader Animation -->
-<div class="loader" id="loader">
-<img src="foodland_logo.jpg" alt="The Food Land Restaurant Logo" class="loader-logo">
-<div class="loader-text">Welcomes You</div>
-</div>
-
-<!-- Header -->
-<header id="header">
-<div class="container header-container">
-<div class="logo-container">
-<img src="foodland_logo.jpg" alt="The Food Land Restaurant Logo" class="logo-img">
-<a href="index.html" class="logo">The Food Land Restaurant</a>
-</div>
-<nav>
-<ul id="nav-menu">
-<li><a href="#home">Home</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="menu.html">Menu</a></li>
-<li><a href="#reservation">Reservations</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-<button class="mobile-menu-btn" id="mobile-menu-btn">
-<i class="fas fa-bars"></i>
-</button>
-</nav>
-</div>
-</header>
-
-<!-- Hero Section -->
-<section id="home">
-<div class="hero-content">
-<h1 class="hero-title">AUTHENTIC INDIAN CUISINE</h1>
-<p class="hero-subtitle">Experience the rich flavors of India with our carefully crafted menu featuring traditional recipes and the freshest ingredients.</p>
-<div class="hero-btns">
-<a href="menu.html" class="btn">View Menu</a>
-<a href="#reservation" class="btn btn-outline">Reserve a Table</a>
-</div>
-</div>
-</section>
-
-<!-- About Section -->
-<section class="about" id="about">
-<div class="container">
-<div class="section-title">
-<h2>OUR STORY</h2>
-</div>
-<div class="about-content">
-<div class="about-text">
-<h3>Serving Authentic Flavors Since 2010</h3>
-<p>Founded in 2020, The Food Land Restaurant has been serving authentic cuisine to the people of Nagpur with love and dedication. Our journey began with a simple vision - to create a dining experience that combines exceptional food with warm hospitality.</p>
-
-<p>Our chefs bring years of experience and a passion for culinary excellence to every dish they create. We source the freshest local ingredients to ensure that every meal is a celebration of flavor and quality.</p>
-<p>At The Food Land, we believe that dining is not just about food, but about creating memories that last a lifetime.</p>
-<p>We source only the finest ingredients from local farmers and producers who share our commitment to quality and authenticity. Each dish is prepared with care to bring you the true taste of India.</p>
-<p>Our welcoming dining space provides the perfect setting for an unforgettable dining experience, whether you're stopping by during your travels or enjoying a meal with family and friends.</p>
-</div>
-<div class="about-image">
-<img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Restaurant Interior" loading="lazy">
-</div>
-</div>
-</div>
-</section>
-
-<!-- Menu Section -->
-<section class="menu" id="menu">
-<div class="container">
-<div class="section-title">
-<h2>OUR MENU</h2>
-</div>
-<div class="menu-grid">
-<!-- Appetizers -->
-<div class="menu-item">
-<img src="https://i.pinimg.com/736x/77/1e/b4/771eb4b06b966c164be868685bfd5c85.jpg" alt="Paneer Tikka" loading="lazy">
-<div class="menu-item-content">
-<h3>Paneer Tikka</h3>
-<p>Marinated cottage cheese grilled to perfection in tandoor with spices</p>
-<div class="price">₹220</div>
-</div>
-</div>
-
-<!-- Main Courses -->
-<div class="menu-item">
-<img src="https://i.pinimg.com/736x/a8/9a/9f/a89a9f222ff5f325895f8053e8bbc5b0.jpg" alt="Butter Chicken" loading="lazy">
-<div class="menu-item-content">
-<h3>Butter Chicken</h3>
-<p>Tender chicken in a rich, creamy tomato gravy with aromatic spices</p>
-<div class="price">₹280</div>
-</div>
-</div>
-
-<!-- Desserts -->
-<div class="menu-item">
-<img src="https://i.pinimg.com/736x/9c/64/1f/9c641f34a51c3d39c254f34acfb25011.jpg" alt="Gulab Jamun" loading="lazy">
-<div class="menu-item-content">
-<h3>Gulab Jamun</h3>
-<p>Soft, melt-in-your-mouth milk balls soaked in sugar syrup</p>
-<div class="price">₹120</div>
-</div>
-</div>
-</div>
-<div class="menu-btn-container">
-<a href="menu.html" class="btn">View Full Menu</a>
-</div>
-</div>
-</section>
-
-<!-- Features Section -->
-<section class="features" id="features">
-<div class="container">
-<div class="section-title">
-<h2>WHY CHOOSE US</h2>
-</div>
-<div class="features-grid">
-<div class="feature-card">
-<div class="feature-icon">
-<i class="fas fa-parking"></i>
-</div>
-<h3>Wallet Parking</h3>
-<p>Convenient and secure parking available for all our guests</p>
-</div>
-<div class="feature-card">
-<div class="feature-icon">
-<i class="fas fa-percentage"></i>
-</div>
-<h3>5% Coupon</h3>
-<p>Get a 5% discount coupon on your every visit to redeem next time</p>
-<a href="coupon.html" class="btn" style="padding: 10px 20px; font-size: 0.9rem; margin-top: auto;">Get Coupon</a>
-</div>
-<div class="feature-card">
-<div class="feature-icon">
-<i class="fas fa-utensils"></i>
-</div>
-<h3>Authentic Cuisine</h3>
-<p>Traditional recipes prepared with the freshest ingredients</p>
-</div>
-<div class="feature-card">
-<div class="feature-icon">
-<i class="fas fa-calendar-alt"></i>
-</div>
-<h3>Event Booking</h3>
-<p>Host your private parties and special events with us</p>
-</div>
-</div>
-</div>
-</section>
-
-<!-- Video Gallery Section -->
-<section class="video-gallery" id="gallery">
-<div class="container">
-<div class="section-title">
-<h2>OUR RESTAURANT</h2>
-</div>
-<div class="video-container">
-<div class="video-item">
-<video controls preload="none" poster="images/video1-poster.jpg">
-<source src="GPS highway .mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
-<div class="video-caption">
-<h3>Restaurant Ambience</h3>
-</div>
-</div>
-<div class="video-item">
-<video controls preload="none" poster="images/video2-poster.jpg">
-<source src="h3.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
-<div class="video-caption">
-<h3>Food Preparation</h3>
-</div>
-</div>
-<div class="video-item">
-<video controls preload="none" poster="images/video3-poster.jpg">
-<source src="h2.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
-<div class="video-caption">
-<h3>Customer Experience</h3>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<!-- Reservation Section -->
-<section class="reservation" id="reservation">
-<div class="container">
-<div class="section-title">
-<h2>MAKE A RESERVATION</h2>
-</div>
-<div class="reservation-form">
-<form action="https://api.web3forms.com/submit" method="POST" id="booking-form">
-<input type="hidden" name="access_key" value="3ad2ac7d-5205-4c7f-b856-de35b9a592f3">
-<input type="hidden" name="subject" value="New Reservation Request">
-<input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-<div class="form-row">
-<div class="form-group">
-<label for="name">Full Name</label>
-<input type="text" id="name" name="name" placeholder="Enter your full name" required>
-</div>
-<div class="form-group">
-<label for="email">Email</label>
-<input type="email" id="email" name="email" placeholder="Enter your email address" required>
-</div>
-</div>
-<div class="form-row">
-<div class="form-group">
-<label for="phone">Phone Number</label>
-<input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
-</div>
-<div class="form-group">
-<label for="guests">Number of Guests</label>
-<select id="guests" name="guests" required>
-<option value="" disabled selected>Select guests</option>
-<option value="1">1 Person</option>
-<option value="2">2 People</option>
-<option value="3">3 People</option>
-<option value="4">4 People</option>
-<option value="5">5 People</option>
-<option value="6+">6+ People</option>
-</select>
-</div>
-</div>
-<div class="form-row">
-<div class="form-group">
-<label for="date">Date</label>
-<input type="date" id="date" name="date" placeholder="dd-mm-yyyy" required>
-</div>
-<div class="form-group">
-<label for="time">Time</label>
-<input type="time" id="time" name="time" placeholder="--:--" required>
-</div>
-</div>
-<div class="form-group">
-<label for="special-requests">Special Requests</label>
-<textarea id="special-requests" name="special-requests" rows="4" placeholder="Any special requests or dietary restrictions..."></textarea>
-</div>
-<button type="submit" class="submit-btn">Book Table</button>
-</form>
-</div>
-</div>
-</section>
-
-<!-- Testimonials Section -->
-<section class="testimonials">
-  <div class="testimonials-container">
-    <div class="testimonials-title">
-      <h2>WHAT OUR CUSTOMERS SAY</h2>
+    <!-- Loading Animation -->
+    <div class="loading-screen">
+        <img src="logo.png" alt="The Food Land Logo" class="logo-animation">
+        <p class="loading-text">Welcome to The Food Land</p>
     </div>
-    <div class="testimonials-mask"></div>
-    <div class="testimonials-track">
-      <!-- Testimonial 1 -->
-      <div class="testimonial-card">
-        <div class="testimonial-text">
-          The food at The Food Land Restaurant is absolutely amazing! The flavors are authentic and the service is exceptional. I highly recommend their Butter Chicken and Garlic Naan.
-        </div>
-        <div class="testimonial-author">
-          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer" class="testimonial-author-img">
-          <div class="testimonial-author-info">
-            <h4>Rahul Sharma</h4>
-            <p>Regular Customer</p>
-            <div class="testimonial-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="logo.png" alt="The Food Land Restaurant">
+                <div class="logo-text">The Food Land</div>
             </div>
-          </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#order">Order Online</a></li>
+                <li><a href="#reservations">Reservations</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#offers">Special Offers</a></li>
+            </ul>
         </div>
-        <div class="testimonial-date">2 days ago</div>
-      </div>
-      
-      <!-- Testimonial 2 -->
-      <div class="testimonial-card">
-        <div class="testimonial-text">
-          We stopped here during our road trip and were blown away by the quality of food. The ambiance is perfect and the staff is very welcoming. Will definitely visit again!
-        </div>
-        <div class="testimonial-author">
-          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer" class="testimonial-author-img">
-          <div class="testimonial-author-info">
-            <h4>Priya Patel</h4>
-            <p>First-time Visitor</p>
-            <div class="testimonial-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Experience Authentic Flavors</h1>
+            <p>Discover the finest culinary traditions in the heart of Nagpur. Our restaurant blends traditional recipes with modern techniques to create unforgettable dining experiences.</p>
+            <div class="hero-btns">
+                <a href="#menu" class="btn">View Menu</a>
+                <a href="#reservations" class="btn btn-outline">Book a Table</a>
             </div>
-          </div>
         </div>
-        <div class="testimonial-date">1 week ago</div>
-      </div>
-      
-      <!-- Testimonial 3 -->
-      <div class="testimonial-card">
-        <div class="testimonial-text">
-          Best Indian restaurant in the area! The flavors are authentic and the portions are generous. The staff is very attentive and the restaurant is always clean.
-        </div>
-        <div class="testimonial-author">
-          <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Customer" class="testimonial-author-img">
-          <div class="testimonial-author-info">
-            <h4>Vikram Singh</h4>
-            <p>Local Resident</p>
-            <div class="testimonial-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">Our Story</h2>
+            <div class="about-container">
+                <div class="about-content">
+                    <h2>Welcome to The Food Land</h2>
+                    <p>Founded in 2010, The Food Land Restaurant has been serving authentic cuisine to the people of Nagpur for over a decade. Our journey began with a simple vision: to create a space where food lovers could experience traditional flavors prepared with love and care.</p>
+                    <p>Today, we continue this tradition under the guidance of our head chef, Rajesh Sharma, who brings over 20 years of culinary expertise to our kitchen. Every dish tells a story, and we invite you to be part of ours.</p>
+                    
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <div>
+                                <h4>Authentic Recipes</h4>
+                                <p>Traditional recipes passed down through generations</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div>
+                                <h4>Fresh Ingredients</h4>
+                                <p>Locally sourced, seasonal ingredients for the best flavors</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div>
+                                <h4>Made with Love</h4>
+                                <p>Every dish prepared with care and attention to detail</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1934&q=80" alt="Restaurant Interior">
+                </div>
             </div>
-          </div>
         </div>
-        <div class="testimonial-date">2 weeks ago</div>
-      </div>
-      
-      <!-- Testimonial 4 -->
-      <div class="testimonial-card">
-        <div class="testimonial-text">
-          The Paneer Tikka here is to die for! Perfectly cooked with just the right amount of spices. I've been coming here for years and the quality never disappoints.
-        </div>
-        <div class="testimonial-author">
-          <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Customer" class="testimonial-author-img">
-          <div class="testimonial-author-info">
-            <h4>Ananya Desai</h4>
-            <p>Food Blogger</p>
-            <div class="testimonial-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <h2 class="section-title">Our Menu</h2>
+            
+            <div class="menu-tabs">
+                <button class="tab-btn active" data-category="starters">Starters</button>
+                <button class="tab-btn" data-category="mains">Main Course</button>
+                <button class="tab-btn" data-category="breads">Breads</button>
+                <button class="tab-btn" data-category="desserts">Desserts</button>
+                <button class="tab-btn" data-category="drinks">Drinks</button>
             </div>
-          </div>
-        </div>
-        <div class="testimonial-date">3 weeks ago</div>
-      </div>
-      
-      <!-- Testimonial 5 -->
-      <div class="testimonial-card">
-        <div class="testimonial-text">
-          Excellent service and even better food! The Dal Makhani is creamy and flavorful, just like my grandmother used to make. Highly recommend for authentic Indian flavors.
-        </div>
-        <div class="testimonial-author">
-          <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Customer" class="testimonial-author-img">
-          <div class="testimonial-author-info">
-            <h4>Arjun Mehta</h4>
-            <p>Food Critic</p>
-            <div class="testimonial-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            
+            <div class="menu-categories">
+                <!-- Starters -->
+                <div class="menu-category active" id="starters">
+                    <div class="menu-items">
+                        <!-- Menu Item 1 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Paneer Tikka">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Paneer Tikka</h3>
+                                    <div class="menu-item-price">₹220</div>
+                                </div>
+                                <p class="menu-item-desc">Marinated cottage cheese grilled to perfection with bell peppers and onions</p>
+                                <div class="dietary-labels">
+                                    <span class="dietary-label veg">Vegetarian</span>
+                                    <span class="dietary-label gluten-free">Gluten Free</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Menu Item 2 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Chicken Wings">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Tandoori Chicken Wings</h3>
+                                    <div class="menu-item-price">₹280</div>
+                                </div>
+                                <p class="menu-item-desc">Succulent chicken wings marinated in yogurt and spices, cooked in tandoor</p>
+                                <div class="dietary-labels">
+                                    <span class="dietary-label non-veg">Non-Vegetarian</span>
+                                    <span class="dietary-label spicy">Spicy</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Menu Item 3 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1632818924360-68d4994cfdb2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Hara Bhara Kabab">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Hara Bhara Kabab</h3>
+                                    <div class="menu-item-price">₹190</div>
+                                </div>
+                                <p class="menu-item-desc">Green vegetable kababs made with spinach, peas and potatoes</p>
+                                <div class="dietary-labels">
+                                    <span class="dietary-label veg">Vegetarian</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Menu Item 4 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Chicken Lollipop">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Chicken Lollipop</h3>
+                                    <div class="menu-item-price">₹320</div>
+                                </div>
+                                <p class="menu-item-desc">Crispy fried chicken wings with spicy schezwan sauce</p>
+                                <div class="dietary-labels">
+                                    <span class="dietary-label non-veg">Non-Vegetarian</span>
+                                    <span class="dietary-label spicy">Spicy</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Menu Item 5 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1601050690117-94b5b7e50a44?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Aloo Tikki">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Aloo Tikki</h3>
+                                    <div class="menu-item-price">₹160</div>
+                                </div>
+                                <p class="menu-item-desc">Crispy potato patties served with mint and tamarind chutney</p>
+                                <div class="dietary-labels">
+                                    <span class="dietary-label veg">Vegetarian</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Menu Item 6 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Fish Tikka">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Fish Tikka</h3>
+                                    <div class="menu-item-price">₹350</div>
+                                </div>
+                                <p class="menu-item-desc">Fresh fish marinated in special spices and grilled in tandoor</p>
+                                <div class="dietary-labels">
+                                    <span class="dietary-label non-veg">Non-Vegetarian</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Main Course -->
+                <div class="menu-category" id="mains">
+                    <div class="menu-items">
+                        <!-- Menu Item 1 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1633945274309-2c16cf9687a4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Butter Chicken">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Butter Chicken</h3>
+                                    <div class="menu-item-price">₹320</div>
+                                </div>
+                                <p class="menu-item-desc">Tender chicken in rich tomato and butter gravy</p>
+                                <div class="dietary-labels">
+                                    <span class="dietary-label non-veg">Non-Vegetarian</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Menu Item 2 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1633512706404-c9e5f1a6b53a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Paneer Butter Masala">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Paneer Butter Masala</h3>
+                                    <div class="menu-item-price">₹280</div>
+                                </div>
+                                <p class="menu-item-desc">Cottage cheese in creamy tomato gravy</p>
+                                <div class="dietary-labels">
+                                    <span class="dietary-label veg">Vegetarian</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Menu Item 3 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Dal Makhani">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Dal Makhani</h3>
+                                    <div class="menu-item-price">₹220</div>
+                                </div>
+                                <p class="menu-item-desc">Black lentils slow cooked with butter and cream</p>
+                                <div class="dietary-labels">
+                                    <span class="dietary-label veg">Vegetarian</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Menu Item 4 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1633613286991-611fe299c4be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Chicken Biryani">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Chicken Biryani</h3>
+                                    <div class="menu-item-price">₹290</div>
+                                </div>
+                                <p class="menu-item-desc">Fragrant basmati rice cooked with chicken and spices</p>
+                                <div class="dietary-labels">
+                                    <span class="dietary-label non-veg">Non-Vegetarian</span>
+                                    <span class="dietary-label spicy">Spicy</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Menu Item 5 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1633613287140-611ce0d1caf5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Veg Biryani">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Veg Biryani</h3>
+                                    <div class="menu-item-price">₹240</div>
+                                </div>
+                                <p class="menu-item-desc">Aromatic rice cooked with mixed vegetables and spices</p>
+                                <div class="dietary-labels">
+                                    <span class="dietary-label veg">Vegetarian</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Menu Item 6 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1633613286771-575e03e4f1e3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Kadhai Paneer">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Kadhai Paneer</h3>
+                                    <div class="menu-item-price">₹270</div>
+                                </div>
+                                <p class="menu-item-desc">Cottage cheese cooked with bell peppers in kadhai gravy</p>
+                                <div class="dietary-labels">
+                                    <span class="dietary-label veg">Vegetarian</span>
+                                    <span class="dietary-label spicy">Spicy</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Breads -->
+                <div class="menu-category" id="breads">
+                    <div class="menu-items">
+                        <!-- Menu Item 1 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1608190003443-86ab6a6d3e83?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Garlic Naan">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Garlic Naan</h3>
+                                    <div class="menu-item-price">₹60</div>
+                                </div>
+                                <p class="menu-item-desc">Soft leavened bread topped with garlic and butter</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Menu Item 2 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1601050690647-8b935b3c5a25?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Butter Naan">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Butter Naan</h3>
+                                    <div class="menu-item-price">₹50</div>
+                                </div>
+                                <p class="menu-item-desc">Classic tandoor-baked bread brushed with butter</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Menu Item 3 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1601050690775-597e08953af0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Laccha Paratha">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Laccha Paratha</h3>
+                                    <div class="menu-item-price">₹70</div>
+                                </div>
+                                <p class="menu-item-desc">Flaky layered whole wheat bread</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Menu Item 4 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1601050690123-724a6f5ef1f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Rumali Roti">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Rumali Roti</h3>
+                                    <div class="menu-item-price">₹40</div>
+                                </div>
+                                <p class="menu-item-desc">Thin handkerchief-like bread cooked on inverted griddle</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Menu Item 5 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1601050690775-597e08953af0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Tandoori Roti">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Tandoori Roti</h3>
+                                    <div class="menu-item-price">₹30</div>
+                                </div>
+                                <p class="menu-item-desc">Whole wheat bread baked in clay oven</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Menu Item 6 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1601050690123-724a6f5ef1f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Missi Roti">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Missi Roti</h3>
+                                    <div class="menu-item-price">₹45</div>
+                                </div>
+                                <p class="menu-item-desc">Spiced bread made with gram flour and wheat flour</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Desserts -->
+                <div class="menu-category" id="desserts">
+                    <div class="menu-items">
+                        <!-- Menu Item 1 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Gulab Jamun">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Gulab Jamun</h3>
+                                    <div class="menu-item-price">₹90</div>
+                                </div>
+                                <p class="menu-item-desc">Soft milk dumplings soaked in sugar syrup</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Menu Item 2 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1586201375761-83865001e1ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Rasmalai">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Rasmalai</h3>
+                                    <div class="menu-item-price">₹110</div>
+                                </div>
+                                <p class="menu-item-desc">Cottage cheese patties in sweetened, thickened milk</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Menu Item 3 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Kheer">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Kheer</h3>
+                                    <div class="menu-item-price">₹80</div>
+                                </div>
+                                <p class="menu-item-desc">Rice pudding flavored with cardamom and nuts</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Menu Item 4 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Gajar Halwa">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Gajar Halwa</h3>
+                                    <div class="menu-item-price">₹120</div>
+                                </div>
+                                <p class="menu-item-desc">Carrot pudding cooked with milk and dry fruits</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Menu Item 5 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1586201375761-83865001e1ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Ice Cream">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Ice Cream (Scoop)</h3>
+                                    <div class="menu-item-price">₹60</div>
+                                </div>
+                                <p class="menu-item-desc">Vanilla, chocolate, strawberry or mango</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Menu Item 6 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Moong Dal Halwa">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Moong Dal Halwa</h3>
+                                    <div class="menu-item-price">₹130</div>
+                                </div>
+                                <p class="menu-item-desc">Rich lentil pudding with ghee and nuts</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Drinks -->
+                <div class="menu-category" id="drinks">
+                    <div class="menu-items">
+                        <!-- Menu Item 1 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Masala Chai">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Masala Chai</h3>
+                                    <div class="menu-item-price">₹40</div>
+                                </div>
+                                <p class="menu-item-desc">Spiced Indian tea with milk</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Menu Item 2 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1551029506-0807df4e2031?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Cold Coffee">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Cold Coffee</h3>
+                                    <div class="menu-item-price">₹90</div>
+                                </div>
+                                <p class="menu-item-desc">Iced coffee with milk and ice cream</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Menu Item 3 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1551029506-0807df4e2031?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Fresh Lime Soda">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Fresh Lime Soda</h3>
+                                    <div class="menu-item-price">₹60</div>
+                                </div>
+                                <p class="menu-item-desc">Sparkling soda with fresh lime and mint</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Menu Item 4 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Mango Lassi">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Mango Lassi</h3>
+                                    <div class="menu-item-price">₹110</div>
+                                </div>
+                                <p class="menu-item-desc">Sweet yogurt drink with mango pulp</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Menu Item 5 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1551029506-0807df4e2031?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Virgin Mojito">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Virgin Mojito</h3>
+                                    <div class="menu-item-price">₹120</div>
+                                </div>
+                                <p class="menu-item-desc">Refreshing mint and lime cooler</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Menu Item 6 -->
+                        <div class="menu-item">
+                            <div class="menu-item-img">
+                                <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Badam Milk">
+                            </div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <h3>Badam Milk</h3>
+                                    <div class="menu-item-price">₹90</div>
+                                </div>
+                                <p class="menu-item-desc">Sweet almond-flavored milk</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+            
+            <div class="menu-download">
+                <a href="menu.pdf" class="btn">Download Full Menu (PDF)</a>
+            </div>
         </div>
-        <div class="testimonial-date">1 month ago</div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Events Section -->
-<section class="events" id="events">
-<div class="container">
-<div class="section-title">
-<h2>EVENTS & PRIVATE DINING</h2>
-</div>
-<div class="features-grid">
-<div class="feature-card">
-<div class="feature-icon">
-<i class="fas fa-birthday-cake"></i>
-</div>
-<h3>Birthday Parties</h3>
-<p>Celebrate your special day with us in a private dining area</p>
-</div>
-<div class="feature-card">
-<div class="feature-icon">
-<i class="fas fa-glass-cheers"></i>
-</div>
-<h3>Anniversaries</h3>
-<p>Romantic settings for your anniversary celebrations</p>
-</div>
-<div class="feature-card">
-<div class="feature-icon">
-<i class="fas fa-briefcase"></i>
-</div>
-<h3>Corporate Events</h3>
-<p>Host your business meetings and corporate gatherings</p>
-</div>
-<div class="feature-card">
-<div class="feature-icon">
-<i class="fas fa-utensils"></i>
-</div>
-<h3>Catering Services</h3>
-<p>Let us bring our authentic flavors to your location</p>
-</div>
-</div>
-<div class="menu-btn-container">
-<a href="#contact" class="btn">Contact Us for Events</a>
-</div>
-</div>
-</section>
-
-<!-- Map Section -->
-<section class="map-section" id="location">
-    <div class="container">
-        <div class="section-title">
-            <h2>OUR LOCATION</h2>
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Gallery</h2>
+            
+            <div class="gallery-container">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Restaurant Interior">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus gallery-icon"></i>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1934&q=80" alt="Dining Area">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus gallery-icon"></i>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1601050690117-94b5b7e50a44?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Food Presentation">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus gallery-icon"></i>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1601050690647-8b935b3c5a25?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Chef Cooking">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus gallery-icon"></i>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 5 -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1601050690775-597e08953af0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Special Dish">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus gallery-icon"></i>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 6 -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1601050690123-724a6f5ef1f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Dessert">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus gallery-icon"></i>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 7 -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Ingredients">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus gallery-icon"></i>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 8 -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Bar Area">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus gallery-icon"></i>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d26174.95834788171!2d79.0757376!3d21.086208!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4bf8e927c6c11%3A0xbc765687f9fb4ab3!2sThe%20Food%20Land%20Family%20Garden%20Restaurant!5e1!3m2!1sen!2sin!4v1748078168822!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>        </div>
-    </div>
-</section>
+    </section>
 
-<!-- Footer -->
-<footer id="contact">
-<div class="container">
-<div class="footer-content">
-<div class="footer-column">
-<h3>THE FOOD LAND RESTAURANT</h3>
-<p>Experience authentic Indian cuisine at our restaurant located conveniently on the highway. We offer an unforgettable culinary journey through India's diverse regional flavors.</p>
-<div class="social-links">
-<a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-<a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-<a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
-</div>
-</div>
-<div class="footer-column">
-<h3>CONTACT US</h3>
-<div class="contact-info">
-<i class="fas fa-map-marker-alt"></i>
-<a href="https://maps.app.goo.gl/3Q9K5X9Y7Z6Z9Y6Y9" target="_blank">The Food Land Restaurant, Chichbhawan, Nagpur, Maharashtra 440005</a>
-</div>
-<div class="contact-info">
-<i class="fas fa-phone"></i>
-<div class="phone-numbers">
-<a href="tel:9021078335" class="phone-number">9021078335</a>
-<a href="tel:9665615666" class="phone-number">9665615666</a>
-</div>
-</div>
-<div class="contact-info">
-<i class="fas fa-envelope"></i>
-<a href="mailto:info@foodlandrestaurant.com">info@foodlandrestaurant.com</a>
-</div>
-</div>
-<div class="footer-column">
-<h3>QUICK LINKS</h3>
-<ul>
-<li><a href="#home">Home</a></li>
-<li><a href="#about">About Us</a></li>
-<li><a href="menu.html">Menu</a></li>
-<li><a href="#reservation">Reservations</a></li>
-</ul>
-</div>
-<div class="footer-column">
-<h3>OPENING HOURS</h3>
-<p>Monday - Sunday: 10:00 AM - 10:00 PM</p>
-<p>Kitchen closes at 9:30 PM</p>
-<p>Happy Hour: 3:00 PM - 6:00 PM Daily</p>
-</div>
-<h2>Made by RR Industries</h2>
-</div>
-<div class="footer-bottom">
-<p>&copy; 2023 The Food Land Restaurant. All Rights Reserved.</p>
-</div>
-</div>
-</footer>
+    <!-- Online Order Section -->
+    <section class="order-online" id="order">
+        <div class="container">
+            <h2 class="section-title">Order Online</h2>
+            
+            <div class="order-container">
+                <div class="order-content">
+                    <h2>Enjoy Our Food At Home</h2>
+                    <p>Can't make it to our restaurant? No problem! We offer convenient online ordering and delivery services so you can enjoy our delicious food in the comfort of your home.</p>
+                    <p>Simply choose your favorite dishes from our menu, place your order, and we'll take care of the rest. Our delivery team ensures your food arrives fresh and hot, just like you'd get in our restaurant.</p>
+                    
+                    <a href="#" class="btn">Order Now</a>
+                    
+                    <div class="delivery-partners">
+                        <h4>Also available on:</h4>
+                        <div class="partners-grid">
+                            <div class="partner-logo">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Zomato_logo.svg/1200px-Zomato_logo.svg.png" alt="Zomato">
+                            </div>
+                            <div class="partner-logo">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Swiggy_logo.svg/1200px-Swiggy_logo.svg.png" alt="Swiggy">
+                            </div>
+                            <div class="partner-logo">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/UberEats_Logo_2018.svg/1200px-UberEats_Logo_2018.svg.png" alt="Uber Eats">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-img">
+                    <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Food Delivery">
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- Exit Intent Modal -->
-<div class="exit-modal" id="exit-modal">
-<div class="exit-modal-content">
-<button class="exit-modal-close" id="exit-modal-close">
-<i class="fas fa-times"></i>
-</button>
-<h2>Before You Go...</h2>
-<p>We'd love your feedback! How was your experience with our website and restaurant?</p>
+    <!-- Reservations Section -->
+    <section class="reservations" id="reservations">
+        <div class="container">
+            <div class="reservations-container">
+                <h2 class="section-title">Make a Reservation</h2>
+                
+                <div class="reservation-form">
+                    <form id="bookingForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="guests">Number of Guests</label>
+                                <select id="guests" class="form-control" required>
+                                    <option value="">Select</option>
+                                    <option value="1">1 Person</option>
+                                    <option value="2">2 People</option>
+                                    <option value="3">3 People</option>
+                                    <option value="4">4 People</option>
+                                    <option value="5">5 People</option>
+                                    <option value="6">6 People</option>
+                                    <option value="7">7 People</option>
+                                    <option value="8">8 People</option>
+                                    <option value="9">9+ People</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="date">Date</label>
+                                <input type="date" id="date" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="time">Time</label>
+                                <input type="time" id="time" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="special">Special Requests (Optional)</label>
+                            <textarea id="special" class="form-control" rows="3"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Book Table</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="rating-stars">
-<i class="fas fa-star rating-star" data-rating="1"></i>
-<i class="fas fa-star rating-star" data-rating="2"></i>
-<i class="fas fa-star rating-star" data-rating="3"></i>
-<i class="fas fa-star rating-star" data-rating="4"></i>
-<i class="fas fa-star rating-star" data-rating="5"></i>
-</div>
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>The Food Land Restaurant</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <p>Chichbhawan, Nagpur, Maharashtra 440005</p>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <p><a href="tel:9021078335">9021078335</a>, <a href="tel:9665615666">9665615666</a></p>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <p><a href="mailto:info@foodlandrestaurant.com">info@foodlandrestaurant.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="opening-hours">
+                        <h3>Opening Hours</h3>
+                        <table class="hours-table">
+                            <tr>
+                                <td>Monday - Friday</td>
+                                <td>11:00 AM - 11:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Saturday - Sunday</td>
+                                <td>10:00 AM - 11:30 PM</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="social-links" style="margin-top: 2rem;">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-yelp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d26174.95834788171!2d79.0757376!3d21.086208!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4bf8e927c6c11%3A0xbc765687f9fb4ab3!2sThe%20Food%20Land%20Family%20Garden%20Restaurant!5e1!3m2!1sen!2sin!4v1748128284488!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<p>Thank you for visiting The Food Land Restaurant!</p>
-</div>
-</div>
+    <!-- Special Offers Section -->
+    <section class="special-offers" id="offers">
+        <div class="container">
+            <h2 class="section-title">Special Offers</h2>
+            
+            <div class="offers-grid">
+                <!-- Offer 1 -->
+                <div class="offer-card">
+                    <div class="offer-img">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Weekend Brunch">
+                    </div>
+                    <div class="offer-content">
+                        <h3 class="offer-title">Weekend Brunch Special</h3>
+                        <p class="offer-desc">Enjoy our special brunch menu every Saturday and Sunday from 10 AM to 3 PM. Includes unlimited coffee and juice.</p>
+                        <p class="offer-valid">Valid until: December 31, 2023</p>
+                        <a href="#reservations" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Offer 2 -->
+                <div class="offer-card">
+                    <div class="offer-img">
+                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Happy Hour">
+                    </div>
+                    <div class="offer-content">
+                        <h3 class="offer-title">Happy Hour</h3>
+                        <p class="offer-desc">50% off on all drinks and appetizers every weekday from 4 PM to 7 PM at our bar area.</p>
+                        <p class="offer-valid">Valid until: December 31, 2023</p>
+                        <a href="#contact" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">More Info</a>
+                    </div>
+                </div>
+                
+                <!-- Offer 3 -->
+                <div class="offer-card">
+                    <div class="offer-img">
+                        <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Family Dinner">
+                    </div>
+                    <div class="offer-content">
+                        <h3 class="offer-title">Family Dinner Package</h3>
+                        <p class="offer-desc">Special 4-course meal for 4 people at just ₹1999. Available every evening from 6 PM onwards.</p>
+                        <p class="offer-valid">Valid until: December 31, 2023</p>
+                        <a href="#reservations" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- Google Review Modal -->
-<div class="review-modal" id="review-modal">
-<div class="review-modal-content">
-<button class="review-modal-close" id="review-modal-close">
-<i class="fas fa-times"></i>
-</button>
-<h2>Leave Us a Google Review</h2>
-<p>We would greatly appreciate it if you could take a moment to share your experience on Google. Your feedback helps us improve and helps others discover our restaurant.</p>
-<a href="https://www.google.com/maps/place/The+Food+Land+Family+Garden+Restaurant/@21.086208,79.0757376,17z/data=!3m1!4b1!4m6!3m5!1s0x3bd4bf8e927c6c11:0xbc765687f9fb4ab3!8m2!3d21.086208!4d79.0757376!16s%2Fg%2F11ryq9v_q3?entry=ttu" target="_blank" class="review-modal-btn">Leave a Review on Google</a>
-<p class="small-text">(You'll be redirected to Google to complete your review)</p>
-</div>
-</div>
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="testimonials-container">
+                <h2 class="section-title">What Our Customers Say</h2>
+                
+                <div class="testimonial-slider">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-text">
+                            The Food Land is hands down the best restaurant in Nagpur. The butter chicken is to die for, and the service is impeccable. We come here every time we're in town!
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-img">
+                                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Priya Sharma">
+                            </div>
+                            <div class="author-info">
+                                <h4>Priya Sharma</h4>
+                                <div class="author-role">Regular Customer</div>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-text">
+                            I hosted my daughter's birthday party here and the staff went above and beyond to make it special. The food was delicious and the ambiance perfect. Highly recommended!
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-img">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rahul Patel">
+                            </div>
+                            <div class="author-info">
+                                <h4>Rahul Patel</h4>
+                                <div class="author-role">Event Host</div>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-text">
+                            As a food blogger, I've eaten at hundreds of restaurants across India. The Food Land stands out for its authentic flavors and consistent quality. Their biryani is the best I've had outside Hyderabad!
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-img">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Ananya Gupta">
+                            </div>
+                            <div class="author-info">
+                                <h4>Ananya Gupta</h4>
+                                <div class="author-role">Food Blogger</div>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script>
-// Loader Animation
-window.addEventListener('load', function() {
-  setTimeout(function() {
-    const loader = document.getElementById('loader');
-    loader.classList.add('loader-hidden');
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="logo.png" alt="The Food Land">
+                        <div class="footer-logo-text">The Food Land</div>
+                    </div>
+                    <div class="footer-about">
+                        <p>Experience authentic flavors in the heart of Nagpur. We blend traditional recipes with modern techniques to create unforgettable dining experiences.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-yelp"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#order">Order Online</a></li>
+                        <li><a href="#reservations">Reservations</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#offers">Special Offers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <p>Chichbhawan, Nagpur, Maharashtra 440005</p>
+                    </div>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <p><a href="tel:9021078335">9021078335</a>, <a href="tel:9665615666">9665615666</a></p>
+                    </div>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <p><a href="mailto:info@foodlandrestaurant.com">info@foodlandrestaurant.com</a></p>
+                    </div>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <p>Mon-Fri: 11AM - 11PM<br>Sat-Sun: 10AM - 11:30PM</p>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <div class="newsletter">
+                        <p>Subscribe to our newsletter to receive updates on special offers and events.</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your Email" class="newsletter-input" required>
+                            <button type="submit" class="newsletter-btn">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 The Food Land Restaurant. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-    // Enable scrolling after loader disappears
-    document.body.style.overflow = 'auto';
-  }, 1500); // 1.5 second delay
-});
-
-// Mobile Menu Toggle
-const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-const navMenu = document.getElementById('nav-menu');
-
-mobileMenuBtn.addEventListener('click', () => {
-  navMenu.classList.toggle('active');
-  mobileMenuBtn.innerHTML = navMenu.classList.contains('active') ? 
-    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-});
-
-// Close mobile menu when clicking on a link
-document.querySelectorAll('#nav-menu a').forEach(link => {
-  link.addEventListener('click', () => {
-    navMenu.classList.remove('active');
-    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-  });
-});
-
-// Header scroll effect
-const header = document.getElementById('header');
-
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 100) {
-    header.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
-  }
-});
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    if (this.getAttribute('href') !== '#') {
-      e.preventDefault();
-
-      const targetId = this.getAttribute('href');
-      const targetElement = document.querySelector(targetId);
-
-      if (targetElement) {
-        window.scrollTo({
-          top: targetElement.offsetTop - 100,
-          behavior: 'smooth'
+    <script>
+        // Loading Animation
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelector('.loading-screen').classList.add('hidden');
+            }, 3000);
         });
 
-        // Update URL without reload
-        history.pushState(null, null, targetId);
-      }
-    }
-  });
-});
+        // Header Scroll Effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
 
-// Form submission with Web3Forms
-const bookingForm = document.getElementById('booking-form');
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
 
-bookingForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
 
-  const formData = new FormData(bookingForm);
-  const submitBtn = bookingForm.querySelector('button[type="submit"]');
-  const originalBtnText = submitBtn.textContent;
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
 
-  try {
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Processing...';
+        // Menu Tab Functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const menuCategories = document.querySelectorAll('.menu-category');
 
-    const response = await fetch(bookingForm.action, {
-      method: 'POST',
-      body: formData
-    });
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons and categories
+                tabBtns.forEach(btn => btn.classList.remove('active'));
+                menuCategories.forEach(cat => cat.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Show corresponding category
+                const categoryId = this.getAttribute('data-category');
+                document.getElementById(categoryId).classList.add('active');
+            });
+        });
 
-    const result = await response.json();
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
 
-    if (result.success) {
-      alert('Thank you for your reservation! We will contact you shortly to confirm your booking.');
-      bookingForm.reset();
-      sessionStorage.setItem('reservationSubmitted', 'true');
+        // Form Submission
+        const bookingForm = document.getElementById('bookingForm');
+        
+        bookingForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const guests = document.getElementById('guests').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const special = document.getElementById('special').value;
+            
+            // Here you would typically send this data to a server
+            // For this example, we'll just show an alert
+            alert(`Thank you, ${name}! Your reservation for ${guests} people on ${date} at ${time} has been received. We'll contact you shortly to confirm.`);
+            
+            // Reset form
+            bookingForm.reset();
+        });
 
-      // Show coupon option after successful booking
-      if (confirm('Would you like to claim your special coupon now?')) {
-        window.location.href = 'coupon.html';
-      }
-    } else {
-      alert('There was an error submitting your reservation. Please try again later.');
-      console.error(result);
-    }
-  } catch (error) {
-    alert('There was an error submitting your reservation. Please try again later.');
-    console.error(error);
-  } finally {
-    submitBtn.disabled = false;
-    submitBtn.textContent = originalBtnText;
-  }
-});
-
-// Lazy load videos when they come into view
-const lazyVideos = document.querySelectorAll('video[preload="none"]');
-
-const lazyVideoObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const video = entry.target;
-      video.preload = 'auto';
-      lazyVideoObserver.unobserve(video);
-    }
-  });
-}, { rootMargin: '200px' });
-
-lazyVideos.forEach(video => {
-  lazyVideoObserver.observe(video);
-});
-
-// Video play/pause functionality
-document.querySelectorAll('.video-item').forEach(videoItem => {
-  const video = videoItem.querySelector('video');
-
-  // Hide controls initially
-  video.removeAttribute('controls');
-
-  // Single click to play/pause
-  videoItem.addEventListener('click', (e) => {
-    if (e.target === video || e.target === videoItem) {
-      if (video.paused) {
-        video.play();
-      } else {
-        video.pause();
-      }
-    }
-  });
-});
-
-// Testimonials Carousel
-const testimonialsTrack = document.querySelector('.testimonials-track');
-let position = 0;
-let speed = 0.5; // pixels per frame
-
-function animateTestimonials() {
-  position -= speed;
-  testimonialsTrack.style.transform = `translateX(${position}px)`;
-  requestAnimationFrame(animateTestimonials);
-}
-
-// Start animation after page loads
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    animateTestimonials();
-  }, 2000);
-});
-
-// Pause animation on hover
-testimonialsTrack.addEventListener('mouseenter', () => {
-  speed = 0;
-});
-
-testimonialsTrack.addEventListener('mouseleave', () => {
-  speed = 0.5;
-});
-
-// Exit Intent Modal - Only show when reaching contact section
-const exitModal = document.getElementById('exit-modal');
-const exitModalClose = document.getElementById('exit-modal-close');
-const contactSection = document.getElementById('contact');
-let contactSectionReached = false;
-
-window.addEventListener('scroll', () => {
-  const contactSectionTop = contactSection.offsetTop;
-  const scrollPosition = window.scrollY + window.innerHeight;
-
-  if (scrollPosition > contactSectionTop && !contactSectionReached) {
-    contactSectionReached = true;
-
-    if (!sessionStorage.getItem('reservationSubmitted')) {
-      setTimeout(() => {
-        exitModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }, 2000);
-    }
-  }
-});
-
-// Close modal
-exitModalClose.addEventListener('click', () => {
-  exitModal.classList.remove('active');
-  document.body.style.overflow = 'auto';
-});
-
-// Star rating functionality
-const ratingStars = document.querySelectorAll('.rating-star');
-let selectedRating = 0;
-
-ratingStars.forEach(star => {
-  star.addEventListener('click', () => {
-    const rating = parseInt(star.dataset.rating);
-    selectedRating = rating;
-
-    // Update stars
-    ratingStars.forEach((s, index) => {
-      if (index < rating) {
-        s.classList.add('active');
-      } else {
-        s.classList.remove('active');
-      }
-    });
-
-    // Show Google review modal after rating
-    setTimeout(() => {
-      const reviewModal = document.getElementById('review-modal');
-      exitModal.classList.remove('active');
-      reviewModal.classList.add('active');
-    }, 1000);
-  });
-
-  // Hover effect
-  star.addEventListener('mouseover', () => {
-    const rating = parseInt(star.dataset.rating);
-
-    ratingStars.forEach((s, index) => {
-      if (index < rating) {
-        s.style.transform = 'scale(1.2)';
-        s.style.color = '#ffd700';
-      }
-    });
-  });
-
-  star.addEventListener('mouseout', () => {
-    ratingStars.forEach((s, index) => {
-      if (!s.classList.contains('active')) {
-        s.style.transform = 'scale(1)';
-        s.style.color = 'var(--rich-red)';
-      }
-    });
-  });
-});
-
-// Google Review Modal
-const reviewModal = document.getElementById('review-modal');
-const reviewModalClose = document.getElementById('review-modal-close');
-
-reviewModalClose.addEventListener('click', () => {
-  reviewModal.classList.remove('active');
-  document.body.style.overflow = 'auto';
-});
-
-// Close modals when clicking outside
-window.addEventListener('click', (e) => {
-  if (e.target === exitModal) {
-    exitModal.classList.remove('active');
-    document.body.style.overflow = 'auto';
-  }
-  if (e.target === reviewModal) {
-    reviewModal.classList.remove('active');
-    document.body.style.overflow = 'auto';
-  }
-});
-</script>
+        // Simple testimonial slider
+        let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll('.testimonial-slide');
+        
+        function showTestimonial(index) {
+            testimonials.forEach(testimonial => {
+                testimonial.style.display = 'none';
+            });
+            
+            testimonials[index].style.display = 'block';
+        }
+        
+        function nextTestimonial() {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }
+        
+        // Initialize
+        showTestimonial(0);
+        
+        // Auto-rotate testimonials every 5 seconds
+        setInterval(nextTestimonial, 5000);
+    </script>
 </body>
 </html>
