@@ -23,6 +23,7 @@
   --matte-green: #2E8B57; /* Sea green */
   --velvet-red: #800020;
   --parchment: #F5F5DC;
+  --parchment-transparent: rgba(245, 245, 220, 0.9);
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
@@ -33,14 +34,46 @@
   box-sizing: border-box;
 }
 
+/* Full page background */
+html {
+  background: url('background-image.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   color: var(--text-dark);
-  background-color: var(--parchment);
+  background-color: var(--parchment-transparent);
+  min-height: 100vh;
   overflow-x: hidden;
   line-height: 1.7;
 }
 
+/* Section styling with semi-transparent background */
+section {
+  padding: 80px 0;
+  position: relative;
+  background-color: var(--parchment-transparent);
+}
+
+/* Special section backgrounds */
+.testimonials,
+.features,
+.events {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+footer {
+  background-color: var(--primary-color);
+}
+
+/* Hero section keeps its own background */
+#home {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+  background-color: transparent;
+}
+
+/* Rest of your existing CSS remains the same */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
@@ -48,13 +81,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--matte-green);
 }
 
-/* Section spacing adjustments */
-section {
-  padding: 80px 0;
-  position: relative;
-}
-
-/* Loader Animation */
 .loader {
   position: fixed;
   top: 0;
@@ -213,15 +239,6 @@ nav ul li a:hover::after {
 }
 
 /* Hero Section */
-#home {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-}
-
 .hero-content {
   position: relative;
   z-index: 2;
@@ -303,11 +320,6 @@ nav ul li a:hover::after {
 }
 
 /* About Section */
-.about {
-  background-color: var(--parchment);
-  color: var(--text-dark);
-}
-
 .section-title {
   text-align: center;
   margin-bottom: 60px;
@@ -386,11 +398,6 @@ nav ul li a:hover::after {
 }
 
 /* Menu Section */
-.menu {
-  background-color: var(--parchment);
-  color: var(--text-dark);
-}
-
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -470,11 +477,6 @@ nav ul li a:hover::after {
 }
 
 /* Video Gallery */
-.video-gallery {
-  background-color: var(--parchment);
-  color: var(--text-dark);
-}
-
 .video-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -521,11 +523,6 @@ nav ul li a:hover::after {
 }
 
 /* Reservation Section */
-.reservation {
-  background-color: var(--parchment);
-  color: var(--text-dark);
-}
-
 .reservation-form {
   max-width: 800px;
   margin: 0 auto;
@@ -594,7 +591,7 @@ nav ul li a:hover::after {
 
 .form-group select {
   appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232E8B57' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-image: url("https://i.pinimg.com/736x/fc/79/86/fc7986d1f0804aac32a8cf748b9cff91.jpg");
   background-repeat: no-repeat;
   background-position: right 20px center;
   background-size: 18px;
@@ -640,7 +637,6 @@ nav ul li a:hover::after {
 
 /* Testimonials Section */
 .testimonials {
-  background-color: var(--text-light);
   padding: 80px 0;
   overflow: hidden;
   position: relative;
@@ -789,7 +785,6 @@ nav ul li a:hover::after {
 
 /* Map Section */
 .map-section {
-  background-color: var(--parchment);
   padding: 80px 0;
 }
 
@@ -809,12 +804,6 @@ nav ul li a:hover::after {
 }
 
 /* Features Section */
-.features {
-  background-color: var(--text-light);
-  color: var(--text-dark);
-  padding: 60px 0;
-}
-
 .features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -864,19 +853,10 @@ nav ul li a:hover::after {
 
 /* Events Section */
 .events {
-  background-color: var(--text-light);
-  color: var(--text-dark);
   padding: 60px 0;
 }
 
 /* Footer */
-footer {
-  background-color: var(--primary-color);
-  color: var(--text-light);
-  padding: 80px 0 30px;
-  border-top: 1px solid rgba(74, 140, 74, 0.2);
-}
-
 .footer-content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
