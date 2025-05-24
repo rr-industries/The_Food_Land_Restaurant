@@ -8,11 +8,11 @@
 <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --primary-color: #20ba20; /* Leaf green */
-  --secondary-color: #4a8c4a; /* Complementary green */
+  --primary-color: #20ba20;
+  --secondary-color: #4a8c4a;
   --accent-color: #f0f0f0;
   --text-light: #ffffff;
   --text-dark: #333333;
@@ -20,10 +20,10 @@
   --green-light: #60c060;
   --green-dark: #1a7a1a;
   --matte-black: #28282B;
-  --matte-green: #2E8B57; /* Sea green */
+  --matte-green: #2E8B57;
   --velvet-red: #800020;
   --parchment: #F5F5DC;
-  --parchment-transparent: rgba(245, 245, 220, 0.3);
+  --parchment-transparent: rgba(245, 245, 220, 0.85);
 }
 
 * {
@@ -32,7 +32,6 @@
   box-sizing: border-box;
 }
 
-/* Full page background */
 html {
   background: url('https://i.pinimg.com/736x/fc/79/86/fc7986d1f0804aac32a8cf748b9cff91.jpg') no-repeat center center fixed;
   background-size: cover;
@@ -48,27 +47,24 @@ body {
   line-height: 1.7;
 }
 
-/* Section styling */
 section {
   padding: 80px 0;
   position: relative;
   background-color: var(--parchment-transparent);
 }
 
-/* Special section backgrounds */
 .testimonials,
 .features,
 .events {
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 0.95);
 }
 
-/* Hero section keeps its own background */
 #home {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),center/cover no-repeat;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Playfair Display', serif;
   font-weight: 600;
   letter-spacing: 1px;
   color: var(--matte-green);
@@ -105,7 +101,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   margin-top: 15px;
   animation: fadeIn 0.5s ease-in-out;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Playfair Display', serif;
   letter-spacing: 3px;
   text-shadow: 0 0 10px rgba(46, 139, 87, 0.5);
 }
@@ -132,9 +128,8 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0 30px;
 }
 
-/* Header Styles */
 header {
-  background-color: rgba(32, 186, 32, 0.9);
+  background-color: rgba(32, 186, 32, 0.95);
   color: var(--text-light);
   padding: 20px 0;
   position: fixed;
@@ -175,7 +170,7 @@ header.scrolled {
   font-weight: 700;
   color: var(--text-light);
   text-decoration: none;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Playfair Display', serif;
   letter-spacing: 2px;
 }
 
@@ -195,7 +190,7 @@ nav ul li a {
   font-weight: 500;
   transition: color 0.3s ease;
   position: relative;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 nav ul li a:hover {
@@ -231,7 +226,6 @@ nav ul li a:hover::after {
   color: var(--parchment);
 }
 
-/* Hero Section */
 .hero-content {
   position: relative;
   z-index: 2;
@@ -289,7 +283,7 @@ nav ul li a:hover::after {
   min-width: 220px;
   text-align: center;
   letter-spacing: 1px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Poppins', sans-serif;
   cursor: pointer;
   text-transform: uppercase;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -313,7 +307,6 @@ nav ul li a:hover::after {
   color: var(--text-light);
 }
 
-/* About Section */
 .section-title {
   text-align: center;
   margin-bottom: 60px;
@@ -391,7 +384,6 @@ nav ul li a:hover::after {
   opacity: 0.5;
 }
 
-/* Menu Section */
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -444,7 +436,7 @@ nav ul li a:hover::after {
   font-size: 1.8rem;
   margin-bottom: 15px;
   color: var(--matte-green);
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Playfair Display', serif;
 }
 
 .menu-item-content p {
@@ -459,7 +451,7 @@ nav ul li a:hover::after {
   font-size: 1.8rem;
   font-weight: 600;
   color: var(--matte-green);
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Playfair Display', serif;
   margin-top: auto;
   letter-spacing: 1px;
   padding-top: 10px;
@@ -470,7 +462,6 @@ nav ul li a:hover::after {
   margin-top: 60px;
 }
 
-/* Video Gallery */
 .video-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -513,10 +504,9 @@ nav ul li a:hover::after {
 .video-caption h3 {
   color: var(--matte-green);
   font-size: 1.5rem;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Playfair Display', serif;
 }
 
-/* Reservation Section */
 .reservation-form {
   max-width: 800px;
   margin: 0 auto;
@@ -534,7 +524,7 @@ nav ul li a:hover::after {
   color: var(--matte-green);
   position: relative;
   padding-bottom: 20px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Playfair Display', serif;
 }
 
 .reservation-form h3::after {
@@ -558,7 +548,7 @@ nav ul li a:hover::after {
   font-weight: 500;
   font-size: 1.1rem;
   color: var(--matte-green);
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .form-group input,
@@ -617,7 +607,7 @@ nav ul li a:hover::after {
   transition: all 0.3s ease;
   margin-top: 20px;
   letter-spacing: 1px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Poppins', sans-serif;
   text-transform: uppercase;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
@@ -628,7 +618,6 @@ nav ul li a:hover::after {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-/* Testimonials Section */
 .testimonials {
   padding: 80px 0;
   overflow: hidden;
@@ -776,7 +765,6 @@ nav ul li a:hover::after {
   background: linear-gradient(90deg, var(--text-light) 0%, rgba(255, 255, 255, 0) 5%, rgba(255, 255, 255, 0) 95%, var(--text-light) 100%);
 }
 
-/* Map Section */
 .map-section {
   padding: 80px 0;
 }
@@ -796,7 +784,6 @@ nav ul li a:hover::after {
   border: none;
 }
 
-/* Features Section */
 .features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -833,7 +820,7 @@ nav ul li a:hover::after {
   font-size: 1.5rem;
   margin-bottom: 15px;
   color: var(--matte-green);
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Playfair Display', serif;
 }
 
 .feature-card p {
@@ -844,12 +831,10 @@ nav ul li a:hover::after {
   flex-grow: 1;
 }
 
-/* Events Section */
 .events {
   padding: 60px 0;
 }
 
-/* Footer */
 footer {
   background-color: var(--primary-color);
 }
@@ -867,7 +852,7 @@ footer {
   color: var(--parchment);
   position: relative;
   padding-bottom: 15px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Playfair Display', serif;
 }
 
 .footer-column h3::after {
@@ -1000,7 +985,6 @@ footer {
   opacity: 0.7;
 }
 
-/* Exit Intent Modal */
 .exit-modal {
   position: fixed;
   top: 0;
@@ -1082,7 +1066,6 @@ footer {
   color: var(--primary-color);
 }
 
-/* Google Review Modal */
 .review-modal {
   position: fixed;
   top: 0;
@@ -1165,7 +1148,6 @@ footer {
   transform: translateY(-3px);
 }
 
-/* Responsive Styles */
 @media (max-width: 1200px) {
   .hero-title {
     font-size: 4.5rem;
