@@ -23,10 +23,8 @@
   --matte-green: #2E8B57; /* Sea green */
   --velvet-red: #800020;
   --parchment: #F5F5DC;
-  --parchment-transparent: rgba(245, 245, 220, 0.9);
+  --parchment-transparent: rgba(245, 245, 220, 0.3);
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
 
 * {
   margin: 0;
@@ -38,6 +36,7 @@
 html {
   background: url('https://i.pinimg.com/736x/fc/79/86/fc7986d1f0804aac32a8cf748b9cff91.jpg') no-repeat center center fixed;
   background-size: cover;
+  min-height: 100vh;
 }
 
 body {
@@ -49,7 +48,7 @@ body {
   line-height: 1.7;
 }
 
-/* Section styling with semi-transparent background */
+/* Section styling */
 section {
   padding: 80px 0;
   position: relative;
@@ -60,20 +59,14 @@ section {
 .testimonials,
 .features,
 .events {
-  background-color: rgba(255, 255, 255, 0.9);
-}
-
-footer {
-  background-color: var(--primary-color);
+  background-color: rgba(255, 255, 255, 0.85);
 }
 
 /* Hero section keeps its own background */
 #home {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-  background-color: transparent;
 }
 
-/* Rest of your existing CSS remains the same */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
@@ -246,6 +239,7 @@ nav ul li a:hover::after {
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
+  padding: 180px 0;
 }
 
 .hero-title {
@@ -591,10 +585,10 @@ nav ul li a:hover::after {
 
 .form-group select {
   appearance: none;
-  background-image: url("https://i.pinimg.com/736x/fc/79/86/fc7986d1f0804aac32a8cf748b9cff91.jpg");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%232E8B57' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 20px center;
-  background-size: 18px;
+  background-size: 12px;
 }
 
 .form-group textarea {
@@ -857,6 +851,10 @@ nav ul li a:hover::after {
 }
 
 /* Footer */
+footer {
+  background-color: var(--primary-color);
+}
+
 .footer-content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1391,8 +1389,7 @@ nav ul li a:hover::after {
 <body>
 <!-- Loader Animation -->
 <div class="loader" id="loader">
-<!-- Replace with your local logo file -->
-<img src="foodland_logo.jpg" alt="GPS Highway Restaurant Logo" class="loader-logo">
+<img src="foodland_logo.jpg" alt="The Food Land Restaurant Logo" class="loader-logo">
 <div class="loader-text">Welcomes You</div>
 </div>
 
@@ -1400,8 +1397,7 @@ nav ul li a:hover::after {
 <header id="header">
 <div class="container header-container">
 <div class="logo-container">
-<!-- Replace with your local logo file -->
-<img src="foodland_logo.jpg" alt="GPS Highway Restaurant Logo" class="logo-img">
+<img src="foodland_logo.jpg" alt="The Food Land Restaurant Logo" class="logo-img">
 <a href="index.html" class="logo">The Food Land Restaurant</a>
 </div>
 <nav>
@@ -1419,7 +1415,7 @@ nav ul li a:hover::after {
 </div>
 </header>
 
-<!-- Hero Section - Enhanced -->
+<!-- Hero Section -->
 <section id="home">
 <div class="hero-content">
 <h1 class="hero-title">AUTHENTIC INDIAN CUISINE</h1>
@@ -1454,7 +1450,7 @@ nav ul li a:hover::after {
 </div>
 </section>
 
-<!-- Menu Section with increased size for better mobile visibility -->
+<!-- Menu Section -->
 <section class="menu" id="menu">
 <div class="container">
 <div class="section-title">
@@ -1497,7 +1493,7 @@ nav ul li a:hover::after {
 </div>
 </section>
 
-<!-- Features Section - Made smaller -->
+<!-- Features Section -->
 <section class="features" id="features">
 <div class="container">
 <div class="section-title">
@@ -1537,7 +1533,7 @@ nav ul li a:hover::after {
 </div>
 </section>
 
-<!-- Video Gallery Section - Card Style with 1:1 ratio -->
+<!-- Video Gallery Section -->
 <section class="video-gallery" id="gallery">
 <div class="container">
 <div class="section-title">
@@ -1575,7 +1571,7 @@ Your browser does not support the video tag.
 </div>
 </section>
 
-<!-- Reservation Section - Enhanced -->
+<!-- Reservation Section -->
 <section class="reservation" id="reservation">
 <div class="container">
 <div class="section-title">
@@ -1635,7 +1631,7 @@ Your browser does not support the video tag.
 </div>
 </section>
 
-<!-- Enhanced Testimonials Section -->
+<!-- Testimonials Section -->
 <section class="testimonials">
   <div class="testimonials-container">
     <div class="testimonials-title">
@@ -1646,7 +1642,7 @@ Your browser does not support the video tag.
       <!-- Testimonial 1 -->
       <div class="testimonial-card">
         <div class="testimonial-text">
-          The food at GPS Highway Restaurant is absolutely amazing! The flavors are authentic and the service is exceptional. I highly recommend their Butter Chicken and Garlic Naan.
+          The food at The Food Land Restaurant is absolutely amazing! The flavors are authentic and the service is exceptional. I highly recommend their Butter Chicken and Garlic Naan.
         </div>
         <div class="testimonial-author">
           <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer" class="testimonial-author-img">
@@ -1732,191 +1728,11 @@ Your browser does not support the video tag.
         </div>
         <div class="testimonial-date">1 month ago</div>
       </div>
-      
-      <!-- Testimonial 6 -->
-      <div class="testimonial-card">
-        <div class="testimonial-text">
-          We had a family gathering here and the staff went above and beyond to accommodate our large group. The food came out quickly and was delicious. Great experience!
-        </div>
-        <div class="testimonial-author">
-          <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Customer" class="testimonial-author-img">
-          <div class="testimonial-author-info">
-            <h4>Neha Kapoor</h4>
-            <p>Family Visitor</p>
-            <div class="testimonial-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-date">1 month ago</div>
-      </div>
-      
-      <!-- Testimonial 7 -->
-      <div class="testimonial-card">
-        <div class="testimonial-text">
-          The Gulab Jamun here is the best I've ever had! Perfectly sweet and soft. The restaurant has a great atmosphere and the prices are very reasonable for the quality.
-        </div>
-        <div class="testimonial-author">
-          <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Customer" class="testimonial-author-img">
-          <div class="testimonial-author-info">
-            <h4>Rohan Verma</h4>
-            <p>Dessert Lover</p>
-            <div class="testimonial-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-date">2 months ago</div>
-      </div>
-      
-      <!-- Testimonial 8 -->
-      <div class="testimonial-card">
-        <div class="testimonial-text">
-          I'm a vegetarian and the options here are fantastic. The Palak Paneer and Vegetable Biryani are my favorites. The spices are perfectly balanced - not too mild, not too hot.
-        </div>
-        <div class="testimonial-author">
-          <img src="https://randomuser.me/api/portraits/women/29.jpg" alt="Customer" class="testimonial-author-img">
-          <div class="testimonial-author-info">
-            <h4>Divya Iyer</h4>
-            <p>Vegetarian Foodie</p>
-            <div class="testimonial-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-date">2 months ago</div>
-      </div>
-      
-      <!-- Testimonial 9 -->
-      <div class="testimonial-card">
-        <div class="testimonial-text">
-          The parking is convenient and the restaurant is very clean. The staff is attentive without being intrusive. The Chicken Tikka Masala is outstanding - perfectly spiced and tender.
-        </div>
-        <div class="testimonial-author">
-          <img src="https://randomuser.me/api/portraits/men/51.jpg" alt="Customer" class="testimonial-author-img">
-          <div class="testimonial-author-info">
-            <h4>Sanjay Gupta</h4>
-            <p>Business Traveler</p>
-            <div class="testimonial-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-date">3 months ago</div>
-      </div>
-      
-      <!-- Testimonial 10 -->
-      <div class="testimonial-card">
-        <div class="testimonial-text">
-          We celebrated our anniversary here and the staff made it extra special with rose petals on the table and a complimentary dessert. The Lamb Rogan Josh was exquisite!
-        </div>
-        <div class="testimonial-author">
-          <img src="https://randomuser.me/api/portraits/women/62.jpg" alt="Customer" class="testimonial-author-img">
-          <div class="testimonial-author-info">
-            <h4>Meera & Raj</h4>
-            <p>Anniversary Celebration</p>
-            <div class="testimonial-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-date">3 months ago</div>
-      </div>
-      
-      <!-- Testimonial 11 -->
-      <div class="testimonial-card">
-        <div class="testimonial-text">
-          The lunch buffet is an incredible value with so many options. Everything is fresh and replenished frequently. The Naan bread is made to order and comes out piping hot.
-        </div>
-        <div class="testimonial-author">
-          <img src="https://randomuser.me/api/portraits/men/38.jpg" alt="Customer" class="testimonial-author-img">
-          <div class="testimonial-author-info">
-            <h4>Amit Joshi</h4>
-            <p>Buffet Enthusiast</p>
-            <div class="testimonial-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-date">4 months ago</div>
-      </div>
-      
-      <!-- Testimonial 12 -->
-      <div class="testimonial-card">
-        <div class="testimonial-text">
-          I was skeptical about highway restaurants but GPS Highway changed my mind. The hygiene standards are excellent and the food tastes like home cooking. The Mutton Curry is a must-try!
-        </div>
-        <div class="testimonial-author">
-          <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Customer" class="testimonial-author-img">
-          <div class="testimonial-author-info">
-            <h4>Kavita Nair</h4>
-            <p>Skeptic Turned Fan</p>
-            <div class="testimonial-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-date">4 months ago</div>
-      </div>
-      
-      <!-- Testimonial 13 -->
-      <div class="testimonial-card">
-        <div class="testimonial-text">
-          The service here is impeccable. The staff remembers our preferences from previous visits and makes excellent recommendations. The fish curry is outstanding!
-        </div>
-        <div class="testimonial-author">
-          <img src="https://randomuser.me/api/portraits/men/28.jpg" alt="Customer" class="testimonial-author-img">
-          <div class="testimonial-author-info">
-            <h4>Rajesh Kumar</h4>
-            <p>Frequent Diner</p>
-            <div class="testimonial-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-date">5 months ago</div>
-      </div>
-      
-      <!-- Testimonial 14 -->
-      <div class="testimonial-card">
-        <div class="testimonial-text">
-          Perfect place for a family dinner. The kids loved the mild butter chicken and we appreciated the authentic spices in the biryani. Will definitely be back!
-        </div>
-        <div class="testimonial-author">
-          <img src="https://randomuser.me/api/portraits/women/37.jpg" alt="Customer" class="testimonial-author-img">
-          <div class="testimonial-author-info">
-            <h4>Sunita Reddy</h4>
-            <p>Family Diner</p>
-            <div class="testimonial-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-date">5 months ago</div>
-      </div>
-      
-      <!-- Testimonial 15 -->
-      <div class="testimonial-card">
-        <div class="testimonial-text">
-          The tandoori items here are exceptional - perfectly charred on the outside and juicy inside. The restaurant has a great vibe and the service is prompt.
-        </div>
-        <div class="testimonial-author">
-          <img src="https://randomuser.me/api/portraits/men/63.jpg" alt="Customer" class="testimonial-author-img">
-          <div class="testimonial-author-info">
-            <h4>Vivek Malhotra</h4>
-            <p>Tandoori Lover</p>
-            <div class="testimonial-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-date">6 months ago</div>
-      </div>
     </div>
   </div>
 </section>
 
-<!-- Events Section - Made smaller -->
+<!-- Events Section -->
 <section class="events" id="events">
 <div class="container">
 <div class="section-title">
@@ -1977,9 +1793,9 @@ Your browser does not support the video tag.
 <h3>THE FOOD LAND RESTAURANT</h3>
 <p>Experience authentic Indian cuisine at our restaurant located conveniently on the highway. We offer an unforgettable culinary journey through India's diverse regional flavors.</p>
 <div class="social-links">
-<a href="https://www.facebook.com/gpshighwayrestaurant/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-<a href="https://www.instagram.com/gps.highway.restaurant/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
-<a href="https://www.youtube.com/@gpsfamilyrestaurant7280" target="_blank"><i class="fab fa-youtube"></i></a>
+<a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+<a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+<a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
 </div>
 </div>
 <div class="footer-column">
@@ -2069,26 +1885,6 @@ window.addEventListener('load', function() {
   }, 1500); // 1.5 second delay
 });
 
-// Check if coming back from menu.html to skip animation
-if (sessionStorage.getItem('visitedMenu')) {
-  document.getElementById('loader').style.display = 'none';
-  document.body.style.overflow = 'auto';
-  sessionStorage.removeItem('visitedMenu');
-
-  // Scroll to the section if hash exists
-  if (window.location.hash) {
-    const targetElement = document.querySelector(window.location.hash);
-    if (targetElement) {
-      setTimeout(() => {
-        window.scrollTo({
-          top: targetElement.offsetTop - 100,
-          behavior: 'smooth'
-        });
-      }, 100);
-    }
-  }
-}
-
 // Mobile Menu Toggle
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 const navMenu = document.getElementById('nav-menu');
@@ -2104,12 +1900,6 @@ document.querySelectorAll('#nav-menu a').forEach(link => {
   link.addEventListener('click', () => {
     navMenu.classList.remove('active');
     mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-
-    // Set flag when navigating to menu.html
-    if (link.getAttribute('href') === 'menu.html') {
-      sessionStorage.setItem('visitedMenu', 'true');
-      sessionStorage.setItem('scrollPosition', window.scrollY);
-    }
   });
 });
 
@@ -2206,12 +1996,6 @@ lazyVideos.forEach(video => {
   lazyVideoObserver.observe(video);
 });
 
-// Restore scroll position if coming back from menu
-if (sessionStorage.getItem('scrollPosition')) {
-  window.scrollTo(0, parseInt(sessionStorage.getItem('scrollPosition')));
-  sessionStorage.removeItem('scrollPosition');
-}
-
 // Video play/pause functionality
 document.querySelectorAll('.video-item').forEach(videoItem => {
   const video = videoItem.querySelector('video');
@@ -2221,7 +2005,6 @@ document.querySelectorAll('.video-item').forEach(videoItem => {
 
   // Single click to play/pause
   videoItem.addEventListener('click', (e) => {
-    // Check if the click was on the video itself or its container
     if (e.target === video || e.target === videoItem) {
       if (video.paused) {
         video.play();
@@ -2232,36 +2015,14 @@ document.querySelectorAll('.video-item').forEach(videoItem => {
   });
 });
 
-// Enhanced Testimonials Carousel with Infinite Loop
+// Testimonials Carousel
 const testimonialsTrack = document.querySelector('.testimonials-track');
-const testimonialCards = document.querySelectorAll('.testimonial-card');
-const cardWidth = testimonialCards[0].offsetWidth + 30; // width + gap
-const totalCards = testimonialCards.length;
-
-// Clone the first few cards and append to end for seamless looping
-for (let i = 0; i < 5; i++) {
-  const clone = testimonialCards[i].cloneNode(true);
-  testimonialsTrack.appendChild(clone);
-}
-
 let position = 0;
 let speed = 0.5; // pixels per frame
 
 function animateTestimonials() {
   position -= speed;
-  
-  // When we've scrolled all original cards, reset position to start
-  if (position < -cardWidth * totalCards) {
-    position = 0;
-    testimonialsTrack.style.transition = 'none';
-    testimonialsTrack.style.transform = `translateX(${position}px)`;
-    // Force reflow
-    void testimonialsTrack.offsetWidth;
-  }
-  
-  testimonialsTrack.style.transition = 'transform 0.1s linear';
   testimonialsTrack.style.transform = `translateX(${position}px)`;
-  
   requestAnimationFrame(animateTestimonials);
 }
 
@@ -2287,7 +2048,6 @@ const exitModalClose = document.getElementById('exit-modal-close');
 const contactSection = document.getElementById('contact');
 let contactSectionReached = false;
 
-// Track scroll position to detect when contact section is reached
 window.addEventListener('scroll', () => {
   const contactSectionTop = contactSection.offsetTop;
   const scrollPosition = window.scrollY + window.innerHeight;
@@ -2295,12 +2055,11 @@ window.addEventListener('scroll', () => {
   if (scrollPosition > contactSectionTop && !contactSectionReached) {
     contactSectionReached = true;
 
-    // Only show if they haven't submitted a reservation
     if (!sessionStorage.getItem('reservationSubmitted')) {
       setTimeout(() => {
         exitModal.classList.add('active');
         document.body.style.overflow = 'hidden';
-      }, 2000); // Show after 2 seconds of reaching contact section
+      }, 2000);
     }
   }
 });
