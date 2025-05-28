@@ -165,23 +165,6 @@
             color: #aaa;
             margin-top: 1rem;
         }
-        
-        .reset-btn {
-            background: linear-gradient(135deg, #d4af37, #f0e68c);
-            border: none;
-            color: #1a1a1a;
-            padding: 0.8rem 1.5rem;
-            border-radius: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .reset-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
-        }
     </style>
 </head>
 <body>
@@ -226,7 +209,6 @@
 
     <footer>
         <p>Claim your discount before it expires!</p>
-        <button class="reset-btn" onclick="resetCards()">Reset Selection</button>
         <p class="terms">*Terms and conditions apply. Only one coupon can be used per purchase.</p>
     </footer>
 
@@ -268,20 +250,6 @@
             if (!fromStorage) {
                 createConfetti(card);
             }
-        }
-
-        function resetCards() {
-            // Clear localStorage
-            localStorage.removeItem('selectedCard');
-            
-            // Reset all cards
-            const allCards = document.querySelectorAll('.card');
-            allCards.forEach(card => {
-                card.classList.remove('flipped', 'locked');
-            });
-            
-            // Show confirmation
-            alert('Your selection has been reset. You can now choose a card again.');
         }
 
         function createConfetti(element) {
