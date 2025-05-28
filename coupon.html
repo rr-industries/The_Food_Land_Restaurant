@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Discount Coupons</title>
+    <title>Premium Coupons</title>
     <style>
         * {
             margin: 0;
@@ -81,6 +81,11 @@
             cursor: pointer;
         }
 
+        .card:hover .card-front {
+            border: 2px solid gold;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
         .card-inner {
             position: relative;
             width: 100%;
@@ -106,12 +111,13 @@
             justify-content: center;
             align-items: center;
             padding: 2rem;
+            transition: all 0.3s;
         }
 
         .card-front {
             background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         .card-front h2 {
@@ -133,74 +139,9 @@
         }
 
         .card-back {
-            background: linear-gradient(135deg, #6e48aa, #9d50bb);
+            background: transparent;
             transform: rotateY(180deg);
-            text-align: center;
-        }
-
-        .coupon {
-            background: white;
-            color: #333;
-            padding: 1.5rem;
-            border-radius: 10px;
-            width: 100%;
-            margin: 1rem 0;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .coupon:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 10px,
-                rgba(0,0,0,0.05) 10px,
-                rgba(0,0,0,0.05) 20px
-            );
-            opacity: 0.3;
-        }
-
-        .coupon-code {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #6e48aa;
-            margin: 1rem 0;
-            letter-spacing: 3px;
-        }
-
-        .coupon-desc {
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            color: #555;
-        }
-
-        .expiry {
-            font-size: 0.8rem;
-            color: #888;
-        }
-
-        .btn {
-            background: white;
-            color: #6e48aa;
-            border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 1rem;
-            transition: all 0.3s;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            /* Empty for your image - just add background-image in your style */
         }
 
         footer {
@@ -230,25 +171,19 @@
     <div class="container">
         <header>
             <h1>EXCLUSIVE DISCOUNTS</h1>
-            <p class="subtitle">Unlock premium savings with our limited-time offers. Select one of our exclusive coupons below.</p>
+            <p class="subtitle">Select one coupon to reveal your special offer</p>
         </header>
 
         <div class="cards-container">
             <div class="card" onclick="selectCard(this)">
                 <div class="card-inner">
                     <div class="card-front">
-                        <h2>Standard</h2>
-                        <p>Perfect for casual shoppers</p>
+                        <h2>Bronze</h2>
+                        <p>Basic savings</p>
                         <div class="tap-text">Tap to reveal</div>
                     </div>
                     <div class="card-back">
-                        <h2>20% OFF</h2>
-                        <div class="coupon">
-                            <div class="coupon-desc">Use this code at checkout</div>
-                            <div class="coupon-code">PREMIUM20</div>
-                            <div class="expiry">Expires: 30/11/2023</div>
-                        </div>
-                        <button class="btn">Copy Code</button>
+                        <!-- Your image will go here -->
                     </div>
                 </div>
             </div>
@@ -256,18 +191,12 @@
             <div class="card" onclick="selectCard(this)">
                 <div class="card-inner">
                     <div class="card-front">
-                        <h2>Premium</h2>
-                        <p>For our most valued customers</p>
+                        <h2>Silver</h2>
+                        <p>Premium offer</p>
                         <div class="tap-text">Tap to reveal</div>
                     </div>
                     <div class="card-back">
-                        <h2>35% OFF</h2>
-                        <div class="coupon">
-                            <div class="coupon-desc">Use this code at checkout</div>
-                            <div class="coupon-code">ELITE35</div>
-                            <div class="expiry">Expires: 15/12/2023</div>
-                        </div>
-                        <button class="btn">Copy Code</button>
+                        <!-- Your image will go here -->
                     </div>
                 </div>
             </div>
@@ -275,56 +204,34 @@
             <div class="card" onclick="selectCard(this)">
                 <div class="card-inner">
                     <div class="card-front">
-                        <h2>VIP</h2>
-                        <p>The ultimate shopping experience</p>
+                        <h2>Gold</h2>
+                        <p>VIP exclusive</p>
                         <div class="tap-text">Tap to reveal</div>
                     </div>
                     <div class="card-back">
-                        <h2>50% OFF</h2>
-                        <div class="coupon">
-                            <div class="coupon-desc">Use this code at checkout</div>
-                            <div class="coupon-code">VIP50</div>
-                            <div class="expiry">Expires: 31/12/2023</div>
-                        </div>
-                        <button class="btn">Copy Code</button>
+                        <!-- Your image will go here -->
                     </div>
                 </div>
             </div>
         </div>
 
         <footer>
-            <p>© 2023 Premium Discounts. All rights reserved.</p>
+            <p>© 2023 Premium Coupons. All rights reserved.</p>
         </footer>
     </div>
 
     <script>
         function selectCard(selectedCard) {
-            // First, close all cards
             const allCards = document.querySelectorAll('.card');
+            
             allCards.forEach(card => {
                 if (card !== selectedCard) {
                     card.classList.remove('active');
                 }
             });
             
-            // Then toggle the selected card
             selectedCard.classList.toggle('active');
         }
-
-        // Add copy functionality to all buttons
-        document.querySelectorAll('.btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.stopPropagation(); // Prevent card flip when clicking button
-                const couponCode = this.parentElement.querySelector('.coupon-code').textContent;
-                navigator.clipboard.writeText(couponCode).then(() => {
-                    const originalText = this.textContent;
-                    this.textContent = 'Copied!';
-                    setTimeout(() => {
-                        this.textContent = originalText;
-                    }, 2000);
-                });
-            });
-        });
     </script>
 </body>
 </html>
