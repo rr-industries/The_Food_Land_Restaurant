@@ -14,6 +14,7 @@
 
         body {
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
         .video-bg {
@@ -39,42 +40,56 @@
 
         header {
             text-align: center;
-            padding: 3rem 0;
+            padding: 2rem 1rem;
             color: #fff;
         }
 
         h1 {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
             text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
             animation: glow 2s infinite alternate;
         }
 
         .subtitle {
-            font-size: 1.2rem;
-            letter-spacing: 3px;
+            font-size: 1rem;
+            letter-spacing: 2px;
             color: #d4af37;
+            margin-bottom: 1rem;
         }
 
         .cards-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 3rem;
-            padding: 2rem;
+            gap: 2rem;
+            padding: 1rem;
             perspective: 1000px;
+            overflow-x: auto;
+            scroll-snap-type: x proximity;
+            min-height: 450px;
+        }
+
+        .cards-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .cards-container::-webkit-scrollbar-thumb {
+            background-color: #d4af37;
+            border-radius: 4px;
         }
 
         .card {
-            width: 300px;
-            height: 400px;
+            width: 280px;
+            height: 380px;
+            min-width: 280px;
             position: relative;
             transform-style: preserve-3d;
             transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            scroll-snap-align: center;
         }
 
         .card:hover {
@@ -99,9 +114,9 @@
             justify-content: center;
             align-items: center;
             color: #d4af37;
-            font-size: 2rem;
+            font-size: 1.8rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
         }
 
         .card-back {
@@ -156,15 +171,56 @@
 
         footer {
             text-align: center;
-            padding: 2rem;
+            padding: 2rem 1rem;
             color: #fff;
-            margin-top: 2rem;
+            margin-top: 1rem;
         }
 
         .terms {
             font-size: 0.8rem;
             color: #aaa;
             margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .reset-btn {
+            background: linear-gradient(135deg, #d4af37, #f0e68c);
+            border: none;
+            color: #1a1a1a;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .reset-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .cards-container {
+                justify-content: flex-start;
+                padding: 1rem 0.5rem;
+                gap: 1rem;
+            }
+            
+            .card {
+                width: 250px;
+                height: 350px;
+                min-width: 250px;
+            }
         }
     </style>
 </head>
@@ -211,12 +267,13 @@
     <footer>
         <p>Claim your discount before it expires!</p>
         <p class="terms">*Terms and conditions apply. Only one coupon can be used per purchase.</p>
+        <button class="reset-btn" onclick="resetSelection()">Reset Selection</button>
     </footer>
 
     <script>
-        // Check localStorage on page load
+        // Use sessionStorage instead of localStorage for temporary storage
         document.addEventListener('DOMContentLoaded', function() {
-            const selectedCard = localStorage.getItem('selectedCard');
+            const selectedCard = sessionStorage.getItem('selectedCard');
             if (selectedCard) {
                 const cards = document.querySelectorAll('.card');
                 cards.forEach(card => {
@@ -237,8 +294,8 @@
                 return;
             }
 
-            // Save selection to localStorage
-            localStorage.setItem('selectedCard', cardNumber.toString());
+            // Save selection to sessionStorage (clears when browser closes)
+            sessionStorage.setItem('selectedCard', cardNumber.toString());
 
             // Flip the selected card
             card.classList.add('flipped');
@@ -253,6 +310,20 @@
 
             // Create celebration effect
             createConfetti(card);
+        }
+
+        function resetSelection() {
+            // Clear the selection
+            sessionStorage.removeItem('selectedCard');
+            
+            // Reset all cards
+            const allCards = document.querySelectorAll('.card');
+            allCards.forEach(card => {
+                card.classList.remove('flipped', 'locked');
+            });
+            
+            // Show confirmation message
+            alert("Selection has been reset. You can now choose a new offer.");
         }
 
         function createConfetti(element) {
