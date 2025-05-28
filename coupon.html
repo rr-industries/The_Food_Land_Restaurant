@@ -62,34 +62,23 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 2rem;
+            flex-wrap: wrap;
+            gap: 1.5rem;
             padding: 1rem;
             perspective: 1000px;
-            overflow-x: auto;
-            scroll-snap-type: x proximity;
-            min-height: 450px;
-        }
-
-        .cards-container::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .cards-container::-webkit-scrollbar-thumb {
-            background-color: #d4af37;
-            border-radius: 4px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .card {
             width: 280px;
             height: 380px;
-            min-width: 280px;
             position: relative;
             transform-style: preserve-3d;
             transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            scroll-snap-align: center;
         }
 
         .card:hover {
@@ -210,16 +199,28 @@
                 font-size: 0.9rem;
             }
             
-            .cards-container {
-                justify-content: flex-start;
-                padding: 1rem 0.5rem;
-                gap: 1rem;
+            .card {
+                width: 160px;
+                height: 220px;
             }
             
+            .card-front {
+                font-size: 1.2rem;
+            }
+            
+            .cards-container {
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
             .card {
-                width: 250px;
-                height: 350px;
-                min-width: 250px;
+                width: 140px;
+                height: 200px;
+            }
+            
+            .card-front {
+                font-size: 1rem;
             }
         }
     </style>
@@ -267,7 +268,6 @@
     <footer>
         <p>Claim your discount before it expires!</p>
         <p class="terms">*Terms and conditions apply. Only one coupon can be used per purchase.</p>
-        <button class="reset-btn" onclick="resetSelection()">Reset Selection</button>
     </footer>
 
     <script>
