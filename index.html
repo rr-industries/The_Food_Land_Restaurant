@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,6 +70,7 @@
         .logo-circle img {
             width: 100%;
             height: auto;
+            animation: rotateLogo 10s linear infinite;
         }
         
         .welcome-text {
@@ -98,6 +98,11 @@
             100% { transform: scale(1); }
         }
         
+        @keyframes rotateLogo {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
         /* Header */
         header {
             padding: 20px 0;
@@ -118,6 +123,7 @@
             font-weight: 700;
             display: flex;
             align-items: center;
+            cursor: pointer;
         }
         
         .logo-img {
@@ -126,6 +132,12 @@
             margin-right: 15px;
             border-radius: 50%;
             overflow: hidden;
+            border: 2px solid #d4af37;
+            transition: transform 0.5s;
+        }
+        
+        .logo-img:hover {
+            transform: rotate(360deg);
         }
         
         .logo-img img {
@@ -167,8 +179,15 @@
         .hero h1 {
             font-family: 'Playfair Display', serif;
             font-size: 4rem;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             color: #d4af37;
+        }
+        
+        .hero h1 span {
+            color: #ff6b6b;
+            font-size: 2.5rem;
+            display: block;
+            margin-top: 10px;
         }
         
         .hero p {
@@ -626,13 +645,12 @@
         }
         
         .footer-logo-img {
-            width: 90px;
-            height: 90px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             border: 2px solid #d4af37;
             margin-right: 15px;
             overflow: hidden;
-            transition: transform 0.5s
         }
         
         .footer-logo-img img {
@@ -703,6 +721,25 @@
             font-size: 0.9rem;
         }
         
+        /* Social Media Emojis */
+        .social-emojis {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .social-emojis a {
+            color: #d4af37;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        
+        .social-emojis a:hover {
+            transform: scale(1.2);
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
@@ -711,6 +748,10 @@
             
             .hero h1 {
                 font-size: 2.5rem;
+            }
+            
+            .hero h1 span {
+                font-size: 1.8rem;
             }
             
             .hero p {
@@ -775,7 +816,7 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo">
+                <div class="logo" onclick="rotateLogo()">
                     <div class="logo-img">
                         <img src="foodland_logo.jpg" alt="The Food Land Logo">
                     </div>
@@ -792,11 +833,10 @@
         </div>
     </header>
     
-   <!-- Hero Section -->
+    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
-            <h1>Delicious Food at The Food Land Restaurant!</h1><br>
-            <span>Lunch & Dinner</span>
+            <h1>Delicious Food at The Food Land Restaurant!<span>Lunch & Dinner</span></h1>
             <p>At The Food Land Restaurant, we mix old-family recipes with cool new cooking tricks to make yummy meals you'll love. We really care about food, and it shows in every bite! 🍴😋</p>
             <div>
                 <a href="#reservation" class="btn">Reserve a Table</a>
@@ -811,27 +851,27 @@
             <h2 class="section-title">Our Menu</h2>
             <div class="menu-grid">
                 <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Signature Dish">
+                    <img src="https://www.cookwithmanali.com/wp-content/uploads/2020/01/Paneer-Butter-Masala.jpg" alt="Paneer Butter Masala">
                     <div class="menu-item-content">
-                        <h3>Signature Platter</h3>
-                        <p>A delightful combination of our chef's special creations, featuring the best of local and international flavors.</p>
-                        <span class="price">₹850</span>
+                        <h3>Paneer Butter Masala</h3>
+                        <p>Creamy and rich paneer cooked in a delicious tomato-based gravy with aromatic spices.</p>
+                        <span class="price">₹350</span>
                     </div>
                 </div>
                 <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Vegetarian Delight">
+                    <img src="https://www.whiskaffair.com/wp-content/uploads/2020/08/Mutton-Handi-2-3.jpg" alt="Mutton Handi">
                     <div class="menu-item-content">
-                        <h3>Vegetarian Delight</h3>
-                        <p>Fresh seasonal vegetables prepared with aromatic spices and served with homemade bread.</p>
-                        <span class="price">₹650</span>
+                        <h3>Mutton Handi</h3>
+                        <p>Tender mutton pieces cooked in a traditional handi with rich spices and herbs.</p>
+                        <span class="price">₹550</span>
                     </div>
                 </div>
                 <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Seafood Special">
+                    <img src="https://www.vegrecipesofindia.com/wp-content/uploads/2013/07/paneer-tikka1.jpg" alt="Paneer Tikka">
                     <div class="menu-item-content">
-                        <h3>Ocean's Bounty</h3>
-                        <p>Fresh catch of the day prepared with our signature marinade and served with lemon butter sauce.</p>
-                        <span class="price">₹950</span>
+                        <h3>Paneer Tikka</h3>
+                        <p>Marinated paneer cubes grilled to perfection with bell peppers and onions.</p>
+                        <span class="price">₹300</span>
                     </div>
                 </div>
             </div>
@@ -877,21 +917,15 @@
             </div>
             <div class="view-full-menu" style="margin-top: 50px;">
                 <a href="#contact" class="btn">Contact Us for Events</a>
+                <div class="social-emojis">
+                    <a href="https://www.facebook.com/p/The-Food-Land-61553023532528/" target="_blank" aria-label="Facebook">📘</a>
+                    <a href="https://www.instagram.com/the_food_land_/" target="_blank" aria-label="Instagram">📸</a>
+                    <a href="https://wa.me/918788798101" target="_blank" aria-label="WhatsApp">💬</a>
+                </div>
             </div>
         </div>
-        
     </section>
-    
 
-     <div class="social-links">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-    <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
-</svg>
-                        <a href="https://www.facebook.com/p/The-Food-Land-61553023532528/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/the_food_land_/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    </div>
     
     
     <!-- Restaurant Photos Section -->
@@ -1019,7 +1053,6 @@
             </div>
         </div>
     </section>
-    
     
 
     <!-- Testimonials Section -->
@@ -1161,7 +1194,7 @@
                     <!-- Duplicate testimonials for continuous scrolling -->
                     <div class="testimonial">
                         <div class="testimonial-content">
-                            <p class="testimonial-text">"Visited first time with family Liked the staff and quick service but the prices could’ve been a bit more economically set (we had chicken rogan josh which costed around 800, the only thing I found expensive) but all in all good experience 👍🏻!"</p>
+                            <p class="testimonial-text">"Visited first time with family Liked the staff and quick service but the prices could've been a bit more economically set (we had chicken rogan josh which costed around 800, the only thing I found expensive) but all in all good experience 👍🏻!"</p>
                             <p class="testimonial-author">- Ayesha</p>
                             <div class="testimonial-rating">
                                 <i class="fas fa-star"></i>
@@ -1215,6 +1248,7 @@
                     <div class="social-links">
                         <a href="https://www.facebook.com/p/The-Food-Land-61553023532528/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/the_food_land_/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/918788798101" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 
@@ -1343,6 +1377,15 @@
                 });
             });
         });
+        
+        // Logo rotation function
+        function rotateLogo() {
+            const logo = document.querySelector('.logo-img');
+            logo.style.transform = 'rotate(360deg)';
+            setTimeout(() => {
+                logo.style.transform = 'rotate(0deg)';
+            }, 1000);
+        }
     </script>
 </body>
 </html>
