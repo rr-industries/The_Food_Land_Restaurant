@@ -180,98 +180,85 @@
             color: #d4af37;
         }
         
-        /* Image Slider */
+        /* Enhanced Image Slider */
         .image-slider {
             width: 100%;
             height: 400px;
             position: relative;
             margin: 30px 0;
-            overflow: hidden;
             perspective: 1000px;
         }
         
         .slider-container {
-            display: flex;
-            height: 100%;
-            width: 100%;
             position: relative;
-        }
-        
-        .slider-left {
-            position: absolute;
-            left: 0;
-            width: 25%;
+            width: 100%;
             height: 100%;
-            overflow: hidden;
             display: flex;
-            flex-direction: column;
             justify-content: center;
-            gap: 10px;
-            z-index: 1;
-        }
-        
-        .slider-right {
-            position: absolute;
-            right: 0;
-            width: 25%;
-            height: 100%;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 10px;
-            z-index: 1;
-        }
-        
-        .slider-center {
-            position: absolute;
-            left: 25%;
-            width: 50%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 2;
-            transform-style: preserve-3d;
+            align-items: center;
         }
         
         .slider-image {
-            width: 100%;
-            height: 100%;
+            position: absolute;
+            width: 30%;
+            height: 80%;
             object-fit: cover;
-            transition: all 0.5s ease;
-            border-radius: 5px;
-            transform-style: preserve-3d;
+            border-radius: 10px;
+            transition: all 0.8s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         
-        .left-image {
-            height: 30%;
-            opacity: 0.7;
-            transform: translateX(-75%) translateZ(-50px);
-        }
-        
-        .right-image {
-            height: 30%;
-            opacity: 0.7;
-            transform: translateX(75%) translateZ(-50px);
-        }
-        
-        .center-image {
-            height: 100%;
-            transform: translateZ(0);
-        }
-        
-        .active-left {
+        /* Center image (fully visible) */
+        .center {
+            z-index: 5;
+            width: 40%;
+            height: 90%;
+            transform: translateX(0) scale(1);
             opacity: 1;
-            transform: translateX(0) translateZ(-30px);
         }
         
-        .active-right {
-            opacity: 1;
-            transform: translateX(0) translateZ(-30px);
+        /* First level side images (20% visible) */
+        .left-20, .right-20 {
+            z-index: 4;
+            opacity: 0.8;
+            height: 80%;
         }
         
-        .active-center {
-            transform: scale(1.05) translateZ(20px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        .left-20 {
+            transform: translateX(-80%) scale(0.8);
+        }
+        
+        .right-20 {
+            transform: translateX(80%) scale(0.8);
+        }
+        
+        /* Second level side images (10% visible) */
+        .left-10, .right-10 {
+            z-index: 3;
+            opacity: 0.5;
+            height: 70%;
+        }
+        
+        .left-10 {
+            transform: translateX(-120%) scale(0.7);
+        }
+        
+        .right-10 {
+            transform: translateX(120%) scale(0.7);
+        }
+        
+        /* Hidden images */
+        .hidden-left, .hidden-right {
+            z-index: 2;
+            opacity: 0;
+        }
+        
+        .hidden-left {
+            transform: translateX(-150%) scale(0.6);
+        }
+        
+        .hidden-right {
+            transform: translateX(150%) scale(0.6);
         }
         
         .hero-buttons {
@@ -322,13 +309,12 @@
                 height: 300px;
             }
             
-            .slider-left, .slider-right {
-                width: 20%;
+            .slider-image {
+                width: 35%;
             }
             
-            .slider-center {
-                left: 20%;
-                width: 60%;
+            .center {
+                width: 45%;
             }
             
             .hero-buttons {
@@ -382,24 +368,13 @@
             
             <div class="image-slider">
                 <div class="slider-container">
-                    <!-- Left Side Images (25% width) -->
-                    <div class="slider-left">
-                        <img src="https://i.pinimg.com/736x/da/f3/98/daf3988311896ed002a1d75f3702870c.jpg" class="slider-image left-image" alt="Food Image 1">
-                        <img src="https://i.pinimg.com/736x/a5/ab/a2/a5aba2bddf1049782cf377cf94675e1c.jpg" class="slider-image left-image" alt="Food Image 2">
-                        <img src="https://i.pinimg.com/736x/c8/9b/55/c89b5541631f3e70d373e6f6dcef92f0.jpg" class="slider-image left-image" alt="Food Image 3">
-                    </div>
-                    
-                    <!-- Center Image (50% width) -->
-                    <div class="slider-center">
-                        <img src="https://i.pinimg.com/736x/6a/cc/f3/6accf3cefbe7f9779d151e3696018990.jpg" class="slider-image center-image active-center" alt="Main Food Image">
-                    </div>
-                    
-                    <!-- Right Side Images (25% width) -->
-                    <div class="slider-right">
-                        <img src="https://i.pinimg.com/736x/e4/16/9b/e4169b3ec326d154dd170f78405a3572.jpg" class="slider-image right-image" alt="Food Image 4">
-                        <img src="https://i.pinimg.com/736x/27/bf/25/27bf25405d8316c3a6153af659f40b88.jpg" class="slider-image right-image" alt="Food Image 5">
-                        <img src="https://i.pinimg.com/736x/fa/dd/0e/fadd0e4afd9a11b620ed615e701164a5.jpg" class="slider-image right-image" alt="Food Image 6">
-                    </div>
+                    <img src="https://i.pinimg.com/736x/6a/cc/f3/6accf3cefbe7f9779d151e3696018990.jpg" class="slider-image center" alt="Main Food Image">
+                    <img src="https://i.pinimg.com/736x/da/f3/98/daf3988311896ed002a1d75f3702870c.jpg" class="slider-image left-20" alt="Food Image 1">
+                    <img src="https://i.pinimg.com/736x/e4/16/9b/e4169b3ec326d154dd170f78405a3572.jpg" class="slider-image right-20" alt="Food Image 2">
+                    <img src="https://i.pinimg.com/736x/a5/ab/a2/a5aba2bddf1049782cf377cf94675e1c.jpg" class="slider-image left-10" alt="Food Image 3">
+                    <img src="https://i.pinimg.com/736x/27/bf/25/27bf25405d8316c3a6153af659f40b88.jpg" class="slider-image right-10" alt="Food Image 4">
+                    <img src="https://i.pinimg.com/736x/c8/9b/55/c89b5541631f3e70d373e6f6dcef92f0.jpg" class="slider-image hidden-left" alt="Food Image 5">
+                    <img src="https://i.pinimg.com/736x/fa/dd/0e/fadd0e4afd9a11b620ed615e701164a5.jpg" class="slider-image hidden-right" alt="Food Image 6">
                 </div>
             </div>
             
@@ -409,6 +384,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- Menu Section -->
 <section class="section" id="menu">
