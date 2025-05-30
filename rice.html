@@ -43,6 +43,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative;
         }
         
         .menu-card {
@@ -53,6 +54,8 @@
             max-width: 800px;
             margin: 20px 0;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
         }
         
         .menu-title {
@@ -96,10 +99,73 @@
             color: #d4af37;
             font-weight: 700;
         }
-        
+
+        /* Animated Icons */
+        .food-icon {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            z-index: 0;
+            animation: float 4s ease-in-out infinite;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .top-icon {
+            top: 10px;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .middle-icon {
+            top: 50%;
+            right: 10%;
+            animation-delay: 0.5s;
+        }
+
+        .bottom-icon {
+            bottom: 10px;
+            left: 15%;
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
         @media (max-width: 768px) {
             .menu-title {
                 font-size: 2rem;
+            }
+            
+            .food-icon {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .top-icon {
+                left: 5%;
+            }
+            
+            .middle-icon {
+                right: 5%;
+            }
+            
+            .bottom-icon {
+                left: 5%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .food-icon {
+                width: 40px;
+                height: 40px;
             }
         }
     </style>
@@ -107,6 +173,18 @@
 </head>
 <body>
     <div class="container">
+        <!-- Top Icon -->
+        <img src="https://i.pinimg.com/736x/2a/c8/89/2ac889b1cbc41672eb03030a55182017.jpg" 
+             alt="Food Icon" class="food-icon top-icon">
+        
+        <!-- Middle Icon -->
+        <img src="https://i.pinimg.com/736x/ca/27/5e/ca275e6ea48958165dfe919ea7b39513.jpg" 
+             alt="Food Icon" class="food-icon middle-icon">
+        
+        <!-- Bottom Icon -->
+        <img src="https://i.pinimg.com/736x/cf/da/76/cfda766258bd1f5c0e3000429f78a4ab.jpg" 
+             alt="Food Icon" class="food-icon bottom-icon">
+        
         <div class="menu-card">
             <h1 class="menu-title">Veg Rice</h1>
             <p class="portion-info">HALF/FULL</p>
