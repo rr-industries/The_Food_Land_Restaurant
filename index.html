@@ -177,94 +177,133 @@
         
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 4rem;
+            font-size: 2rem;
             margin-bottom: 30px;
             color: #d4af37;
             position: relative;
             z-index: 2;
         }
         
-        /* Image Slider */
-        .image-slider {
+        /* Enhanced Image Slider */
+        .image-slider-container {
             width: 100%;
-            height: 400px;
-            position: relative;
             margin: 30px 0;
+            position: relative;
             overflow: hidden;
-            perspective: 1000px;
         }
         
-        .slider-container {
-            display: flex;
-            height: 100%;
+        .image-slider {
             width: 100%;
+            height: 400px; /* Reduced height */
             position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
         }
         
         .slider-track {
-            position: absolute;
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+            will-change: transform;
+        }
+        
+        .slider-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slider-slide img {
             width: 100%;
             height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .slider-image {
-            position: absolute;
-            width: 50%;
-            height: 80%;
             object-fit: cover;
-            border-radius: 10px;
-            transition: all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            transform-style: preserve-3d;
+            object-position: center;
+            transition: transform 0.5s ease;
         }
         
-        /* Center image */
-        .center {
-            z-index: 3;
-            transform: translateX(0) scale(1);
-            opacity: 1;
+        .slider-slide:hover img {
+            transform: scale(1.05);
         }
         
-        /* Left and right images (20% visible) */
-        .left-20, .right-20 {
-            z-index: 2;
-            width: 30%;
-            height: 70%;
-            opacity: 0.8;
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 30px;
+            color: white;
+            text-align: left;
         }
         
-        .left-20 {
-            transform: translateX(-80%) scale(0.9);
+        .slide-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #d4af37;
         }
         
-        .right-20 {
-            transform: translateX(80%) scale(0.9);
+        .slide-content p {
+            font-size: 1rem;
+            opacity: 0.9;
+            max-width: 60%;
         }
         
-        /* Far left and right images (10% visible) */
-        .left-10, .right-10 {
-            z-index: 1;
-            width: 25%;
-            height: 60%;
-            opacity: 0.6;
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            z-index: 10;
+            padding: 0 20px;
         }
         
-        .left-10 {
-            transform: translateX(-150%) scale(0.8);
+        .slider-btn {
+            background-color: rgba(212, 175, 55, 0.7);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
         }
         
-        .right-10 {
-            transform: translateX(150%) scale(0.8);
+        .slider-btn:hover {
+            background-color: rgba(212, 175, 55, 0.9);
+            transform: scale(1.1);
         }
         
-        /* Hidden images */
-        .hidden {
-            opacity: 0;
-            z-index: 0;
-            transform: translateX(0) scale(0.7);
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .slider-dot.active {
+            background-color: #d4af37;
+            transform: scale(1.2);
         }
         
         .hero-buttons {
@@ -424,13 +463,13 @@
         .social-icons-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 35px;
             margin-top: 20px;
         }
         
         .social-icon {
-            width: 40px;
-            height: 40px;
+            width: 100px;
+            height: 100px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -573,55 +612,63 @@
         }
         
         /* Testimonials Section */
-        .testimonials {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-        
-        .testimonials-container {
-            overflow: hidden;
-            position: relative;
-            max-width: 100%;
-        }
-        
-        .testimonials-slider {
-            display: flex;
-            transition: transform 0.5s ease;
-            animation: scrollTestimonials 30s linear infinite;
-            width: calc(250px * 14); /* Double the items for seamless looping */
-        }
-        
-        @keyframes scrollTestimonials {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-250px * 7)); }
-        }
-        
-        .testimonial {
-            min-width: 250px;
-            padding: 0 15px;
-        }
-        
-        .testimonial-content {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 10px;
-            height: 100%;
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-            font-size: 0.9rem;
-        }
-        
-        .testimonial-author {
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: #d4af37;
-        }
-        
-        .testimonial-rating {
-            color: #d4af37;
-        }
+.testimonials {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.testimonials-container {
+    overflow: hidden;
+    position: relative;
+    max-width: 100%;
+}
+
+.testimonials-slider {
+    display: flex;
+    transition: transform 0.5s ease;
+    animation: scrollTestimonials 30s linear infinite;
+    width: calc(300px * 14); /* Adjusted width for square testimonials */
+}
+
+@keyframes scrollTestimonials {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-300px * 7)); }
+}
+
+.testimonial {
+    min-width: 300px; /* Increased width to accommodate square */
+    height: 300px; /* Set height equal to width */
+    padding: 0 15px;
+}
+
+.testimonial-content {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.testimonial-text {
+    font-style: italic;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* Limit to 4 lines */
+    -webkit-box-orient: vertical;
+}
+
+.testimonial-author {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #d4af37;
+}
+
+.testimonial-rating {
+    color: #d4af37;
+}
         
         /* Map Section */
         .map-container {
@@ -792,7 +839,7 @@
             }
         }
         
-        @media (max-width: 768px) {
+        @media (max-width: 800px) {
             .nav-links {
                 display: none;
             }
@@ -835,6 +882,10 @@
                 bottom: auto;
                 margin-top: 20px;
             }
+            
+            .slide-content p {
+                max-width: 100%;
+            }
         }
         
         @media (max-width: 480px) {
@@ -856,6 +907,14 @@
             
             .reservation-form {
                 padding: 20px;
+            }
+            
+            .slide-content {
+                padding: 15px;
+            }
+            
+            .slide-content h3 {
+                font-size: 1.4rem;
             }
         }
     </style>
@@ -891,13 +950,62 @@
         </div>
     </header>
     
-    <!-- Hero Section -->
+    <!-- Hero Section with Enhanced Slider -->
     <section class="hero" id="home">
-        <div class="container">            
-            <div class="image-slider">
-                <div class="slider-container">
+        <div class="container">
+            <h1>Experience Culinary Excellence</h1>
+            
+            <div class="image-slider-container">
+                <div class="image-slider">
                     <div class="slider-track">
-                        <!-- Images will be inserted here by JavaScript -->
+                        <div class="slider-slide">
+                            <img src="1.jpg" alt="Restaurant Interior">
+                            <div class="slide-content">
+                                <h3>Elegant Dining</h3>
+                                <p>Experience our beautifully designed dining area with a warm and inviting atmosphere</p>
+                            </div>
+                        </div>
+                        <div class="slider-slide">
+                            <img src="2.jpg" alt="Signature Dishes">
+                            <div class="slide-content">
+                                <h3>Signature Dishes</h3>
+                                <p>Discover our chef's special creations made with the freshest ingredients</p>
+                            </div>
+                        </div>
+                        <div class="slider-slide">
+                            <img src="img7.jpg" alt="Outdoor Seating">
+                            <div class="slide-content">
+                                <h3>Garden Setting</h3>
+                                <p>Enjoy your meal in our beautiful outdoor garden area</p>
+                            </div>
+                        </div>
+                        <div class="slider-slide">
+                            <img src="3.jpg" alt="Chef Cooking">
+                            <div class="slide-content">
+                                <h3>Expert Chefs</h3>
+                                <p>Our talented chefs prepare each dish with passion and precision</p>
+                            </div>
+                        </div>
+                        <div class="slider-slide">
+                            <img src="4.jpg" alt="Private Events">
+                            <div class="slide-content">
+                                <h3>Private Events</h3>
+                                <p>Host your special occasions in our elegant private dining spaces</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="slider-nav">
+                        <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                        <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    
+                    <div class="slider-dots">
+                        <div class="slider-dot active"></div>
+                        <div class="slider-dot"></div>
+                        <div class="slider-dot"></div>
+                        <div class="slider-dot"></div>
+                        <div class="slider-dot"></div>
                     </div>
                 </div>
             </div>
@@ -970,14 +1078,14 @@
             <h2 class="section-title">Events & Private Dining</h2>
             <div class="events-grid">
                 <div class="event-item">
-                    <img src="img8.jpg" alt="Birthday Party">
+                    <img src="bday.jpg" alt="Birthday Party">
                     <div class="event-content">
                         <h3>Birthday Parties</h3>
                         <p>Celebrate your special day with us in a private dining area</p>
                     </div>
                 </div>
                 <div class="event-item">
-                    <img src="anniversary" alt="Anniversary">
+                    <img src="anniversary.jpg" alt="Anniversary">
                     <div class="event-content">
                         <h3>Anniversaries</h3>
                         <p>Romantic settings for your anniversary celebrations</p>
@@ -1002,34 +1110,33 @@
                 <a href="#contact" class="btn">Contact Us for Events</a>
             </div>
             <div class="social-icons-container">
-                <a href="https://www.facebook.com/p/The-Food-Land-61553023532528/" target="_blank" class="social-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                        <path fill="#1877F2" d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/>
-                    </svg>
-                </a>
-                <a href="https://www.instagram.com/the_food_land_/" target="_blank" class="social-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                        <defs>
-                            <linearGradient id="insta-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#f09433"/>
-                                <stop offset="25%" stop-color="#e6683c"/>
-                                <stop offset="50%" stop-color="#dc2743"/>
-                                <stop offset="75%" stop-color="#cc2366"/>
-                                <stop offset="100%" stop-color="#bc1888"/>
-                            </linearGradient>
-                        </defs>
-                        <rect x="1" y="1" width="22" height="22" rx="5.5" stroke="url(#insta-gradient)" stroke-width="2" fill="none"/>
-                        <circle cx="12" cy="12" r="5.5" stroke="url(#insta-gradient)" stroke-width="2" fill="none"/>
-                        <circle cx="18" cy="6" r="1" fill="url(#insta-gradient)"/>
-                    </svg>
-                </a>
-                <a href="https://wa.me/918788798101" target="_blank" class="social-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                        <path fill="#25D366" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                    </svg>
-                </a>
-            </div>
-        </div>
+    <a href="https://www.facebook.com/p/The-Food-Land-61553023532528/" target="_blank" class="social-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="50" height="50">
+            <path fill="#1877F2" d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/>
+        </svg>
+    </a>
+    <a href="https://www.instagram.com/the_food_land_/" target="_blank" class="social-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="50" height="50">
+            <defs>
+                <linearGradient id="insta-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#f09433"/>
+                    <stop offset="25%" stop-color="#e6683c"/>
+                    <stop offset="50%" stop-color="#dc2743"/>
+                    <stop offset="75%" stop-color="#cc2366"/>
+                    <stop offset="100%" stop-color="#bc1888"/>
+                </linearGradient>
+            </defs>
+            <rect x="1" y="1" width="22" height="22" rx="5.5" stroke="url(#insta-gradient)" stroke-width="2" fill="none"/>
+            <circle cx="12" cy="12" r="5.5" stroke="url(#insta-gradient)" stroke-width="2" fill="none"/>
+            <circle cx="18" cy="6" r="1" fill="url(#insta-gradient)"/>
+        </svg>
+    </a>
+    <a href="https://wa.me/918788798101" target="_blank" class="social-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="50" height="50">
+            <path fill="#25D366" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+</div>
     </section>
     
     <!-- Restaurant Photos Section -->
@@ -1053,10 +1160,10 @@
                     <img src="img5.jpg" alt="Chef Cooking">
                 </div>
                 <div class="gallery-item">
-                    <img src="img86.jpg" alt="Private Dining">
+                    <img src="bday.jpg" alt="Private Dining">
                 </div>
                 <div class="gallery-item">
-                    <img src="img8.jpg" alt="Private Dining">
+                    <img src="img6.jpg" alt="Private Dining">
                 </div><div class="gallery-item">
                     <img src="img7.jpg" alt="Private Dining">
                 </div>
@@ -1073,7 +1180,7 @@
             </div>
             <div class="reservation-form">
                 <form action="https://api.web3forms.com/submit" method="POST" id="booking-form">
-                    <input type="hidden" name="access_key" value="3ad2ac7d-5205-4c7f-b856-de35b9a592f3">
+                    <input type="hidden" name="access_key" value="ec4ca59a-4e99-437b-be32-3620577235f7">
                     <input type="hidden" name="subject" value="New Reservation Request">
                     <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
@@ -1436,97 +1543,62 @@
     </footer>
 
     <script>
-        // Image slider functionality
         document.addEventListener('DOMContentLoaded', function() {
-            // Image URLs for the slider
-            const images = [
-                'img7.jpg',
-                'https://i.pinimg.com/736x/da/f3/98/daf3988311896ed002a1d75f3702870c.jpg',
-                'https://i.pinimg.com/736x/a5/ab/a2/a5aba2bddf1049782cf377cf94675e1c.jpg',
-                'https://i.pinimg.com/736x/c8/9b/55/c89b5541631f3e70d373e6f6dcef92f0.jpg',
-                'https://i.pinimg.com/736x/e4/16/9b/e4169b3ec326d154dd170f78405a3572.jpg',
-                'https://i.pinimg.com/736x/27/bf/25/27bf25405d8316c3a6153af659f40b88.jpg',
-                'https://i.pinimg.com/736x/fa/dd/0e/fadd0e4afd9a11b620ed615e701164a5.jpg'
-            ];
-            
+            // Enhanced Image Slider Functionality
             const sliderTrack = document.querySelector('.slider-track');
+            const slides = document.querySelectorAll('.slider-slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
             
-            // Create image elements
-            images.forEach((imgSrc, index) => {
-                const img = document.createElement('img');
-                img.src = imgSrc;
-                img.alt = `Food Image ${index + 1}`;
-                img.classList.add('slider-image');
-                sliderTrack.appendChild(img);
-            });
+            let currentIndex = 0;
+            const slideCount = slides.length;
             
-            const sliderImages = document.querySelectorAll('.slider-image');
-            
-            // Initialize slider positions
-            function initSlider() {
-                sliderImages.forEach((img, index) => {
-                    if (index === 0) {
-                        img.classList.add('center');
-                    } else if (index === 1) {
-                        img.classList.add('left-20');
-                    } else if (index === 2) {
-                        img.classList.add('right-20');
-                    } else if (index === 3) {
-                        img.classList.add('left-10');
-                    } else if (index === 4) {
-                        img.classList.add('right-10');
-                    } else {
-                        img.classList.add('hidden');
-                    }
+            // Initialize slider
+            function updateSlider() {
+                sliderTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Update dots
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
                 });
             }
             
-            initSlider();
+            // Auto slide
+            let slideInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % slideCount;
+                updateSlider();
+            }, 5000);
             
-            // Rotate images every 3 seconds
-            setInterval(rotateImages, 3000);
+            // Manual navigation
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % slideCount;
+                updateSlider();
+                resetInterval();
+            });
             
-            function rotateImages() {
-                // Get current positions
-                const currentCenter = document.querySelector('.center');
-                const currentLeft20 = document.querySelector('.left-20');
-                const currentRight20 = document.querySelector('.right-20');
-                const currentLeft10 = document.querySelector('.left-10');
-                const currentRight10 = document.querySelector('.right-10');
-                
-                // Move center to left-20
-                currentCenter.classList.remove('center');
-                currentCenter.classList.add('left-20');
-                
-                // Move left-20 to left-10
-                currentLeft20.classList.remove('left-20');
-                currentLeft20.classList.add('left-10');
-                
-                // Move left-10 to hidden (or cycle to end)
-                currentLeft10.classList.remove('left-10');
-                currentLeft10.classList.add('hidden');
-                
-                // Move right-20 to center
-                currentRight20.classList.remove('right-20');
-                currentRight20.classList.add('center');
-                
-                // Move right-10 to right-20
-                currentRight10.classList.remove('right-10');
-                currentRight10.classList.add('right-20');
-                
-                // Find next image to show as right-10
-                const allImages = Array.from(sliderImages);
-                const visibleImages = [currentCenter, currentLeft20, currentRight20, currentLeft10, currentRight10];
-                const hiddenImages = allImages.filter(img => !visibleImages.includes(img));
-                
-                if (hiddenImages.length > 0) {
-                    hiddenImages[0].classList.remove('hidden');
-                    hiddenImages[0].classList.add('right-10');
-                } else {
-                    // If no hidden images, cycle the left-10 back to right-10
-                    currentLeft10.classList.remove('hidden');
-                    currentLeft10.classList.add('right-10');
-                }
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+                updateSlider();
+                resetInterval();
+            });
+            
+            // Dot navigation
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateSlider();
+                    resetInterval();
+                });
+            });
+            
+            // Reset interval when user interacts
+            function resetInterval() {
+                clearInterval(slideInterval);
+                slideInterval = setInterval(() => {
+                    currentIndex = (currentIndex + 1) % slideCount;
+                    updateSlider();
+                }, 5000);
             }
             
             // Set today's date and time in the reservation form
