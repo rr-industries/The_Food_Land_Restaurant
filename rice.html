@@ -100,43 +100,34 @@
             font-weight: 700;
         }
 
-        /* Animated Icons */
+        /* Food Icons - Larger and above card */
         .food-icon {
             position: absolute;
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             object-fit: cover;
-            z-index: 0;
-            animation: float 4s ease-in-out infinite;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            border: 2px solid #d4af37;
         }
 
         .top-icon {
-            top: 10px;
-            left: 10%;
-            animation-delay: 0s;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .middle-icon {
             top: 50%;
-            right: 10%;
-            animation-delay: 0.5s;
+            right: -40px;
+            transform: translateY(-50%);
         }
 
         .bottom-icon {
-            bottom: 10px;
-            left: 15%;
-            animation-delay: 1s;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-15px);
-            }
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         @media (max-width: 768px) {
@@ -145,27 +136,31 @@
             }
             
             .food-icon {
-                width: 50px;
-                height: 50px;
-            }
-            
-            .top-icon {
-                left: 5%;
+                width: 70px;
+                height: 70px;
             }
             
             .middle-icon {
-                right: 5%;
-            }
-            
-            .bottom-icon {
-                left: 5%;
+                right: -35px;
             }
         }
 
         @media (max-width: 480px) {
             .food-icon {
-                width: 40px;
-                height: 40px;
+                width: 60px;
+                height: 60px;
+            }
+            
+            .middle-icon {
+                display: none; /* Hide side icon on very small screens */
+            }
+            
+            .top-icon {
+                top: -30px;
+            }
+            
+            .bottom-icon {
+                bottom: -30px;
             }
         }
     </style>
