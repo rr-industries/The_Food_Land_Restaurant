@@ -775,7 +775,7 @@
             }
             
             .image-slider {
-                height: 450px
+                height: 450px;
             }
         }
         
@@ -794,7 +794,24 @@
             }
             
             .image-slider {
-                height: 250px;
+                height: 300px;
+            }
+            
+            /* Mobile slider adjustments */
+            .slider-image {
+                width: 90% !important;
+                height: 100% !important;
+            }
+            
+            .center {
+                transform: translateX(0) scale(1) !important;
+                opacity: 1 !important;
+            }
+            
+            .left-20, .right-20, .left-10, .right-10 {
+                opacity: 0 !important;
+                visibility: hidden !important;
+                transform: translateX(0) scale(0.8) !important;
             }
             
             .form-row {
@@ -813,14 +830,8 @@
             
             .btn {
                 width: 100%;
-                max-width: 50px;
+                max-width: 250px;
                 margin-bottom: 15px;
-            }
-            
-            .restaurant-tagline {
-                position: relative;
-                bottom: auto;
-                margin-top: 20px;
             }
         }
         
@@ -830,7 +841,7 @@
             }
             
             .image-slider {
-                height: 450px;
+                height: 250px;
             }
             
             .section-title {
@@ -843,6 +854,12 @@
             
             .reservation-form {
                 padding: 20px;
+            }
+            
+            /* Further mobile slider adjustments */
+            .slider-image {
+                width: 95% !important;
+                height: 100% !important;
             }
         }
     </style>
